@@ -11,7 +11,7 @@ import "./globals.css";
 export default function RootLayout({ children }) {
   return (
     <html>
-      <body>{children}</body>
+      <body style={{ height: '2000px', background: 'lightgrey' }}>{children}</body>
     </html>
   );
 }
