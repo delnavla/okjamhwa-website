@@ -23,7 +23,7 @@ export default function Header() {
 
 
   return (
-    <header className="sticky top-0 w-full h-20 transition-all duration-400"
+    <header className="sticky top-0 w-full h-20 transition-all duration-400 z-50"
     style={{
         background: isScrolled
           ? 'white'
@@ -38,6 +38,7 @@ export default function Header() {
               width={148}
               height={54}
               alt="logo"      
+              priority={true}
             />
           </Link>
           <Link href='#' className='hover:text-red-600'>회사소개</Link>
