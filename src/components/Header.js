@@ -24,11 +24,11 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 w-full h-20 transition-all duration-400 z-50"
-    style={{
-        background: isScrolled
-          ? 'white'
-          : 'linear-gradient(rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.24) 40%, transparent 100%)'
-      }}
+      style={{
+          background: isScrolled
+            ? 'white'
+            : 'linear-gradient(rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.24) 40%, transparent 100%)'
+        }}
     >
       <div className="flex w-full h-full px-4 justify-between max-w-screen-xl xl:mx-auto">
         <div className={`flex items-center space-x-7 whitespace-nowrap ${isScrolled ? 'text-gray-700' : 'text-slate-50' }`} style={{fontFamily: 'Pretendard', fontWeight: 700}} >
