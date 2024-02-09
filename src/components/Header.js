@@ -31,10 +31,10 @@ export default function Header() {
         }}
     >
       <div className="flex w-full h-full px-4 justify-between max-w-screen-xl xl:mx-auto">
-        <div className={`flex items-center space-x-7 whitespace-nowrap ${isScrolled ? 'text-gray-700' : 'text-slate-50' }`} style={{fontFamily: 'Pretendard', fontWeight: 700}} >
+        <div className={`flex items-center space-x-7 whitespace-nowrap font-pretendard font-bold ${isScrolled ? 'text-gray-700' : 'text-slate-50' }`}>
           <Link href='#'>
             <Image 
-              src={`/horizontalLogo2_${isScrolled ? 'black' : 'white'}.svg`}
+              src={`horizontalLogo2_${isScrolled ? 'black' : 'white'}.svg`}
               width={148}
               height={54}
               alt="logo"      
@@ -50,10 +50,10 @@ export default function Header() {
         <div className='flex items-center'>
 
           <Image 
-            src="/menu.svg"
+            src="menu.svg"
             width={40}
             height={40}
-            alt="menu"          
+            alt="menu"      
           />
       </div>
       </div>

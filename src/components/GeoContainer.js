@@ -57,7 +57,8 @@ export default function GeoContainer({
   }, []);
 
   return (
-    <svg ref={svgRef} width={width} height={height}>
-    </svg>
+    <div className="flex justify-center my-10 ">
+      <svg ref={svgRef} width={width} height={height}/>
+    </div>
   );
 }
