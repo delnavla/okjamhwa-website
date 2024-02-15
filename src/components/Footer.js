@@ -7,7 +7,7 @@ export default function Footer() {
       <section className="flex px-6 max-w-screen-xl justify-between m-auto font-pretendard">
       <div className="text-gray-600 text-sm font-light leading-loose">
         <Image 
-          src={'horizontalLogo1_Gray.svg'}
+          src={'/horizontalLogo1_Gray.svg'}
           width={120}
           height={60}
           alt="logo"      

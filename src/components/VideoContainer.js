@@ -1,6 +1,6 @@
 export default function VideoContainer() {
   return (
-    <div className="-mt-20 relative">
+    <div className="-mt-24 relative">
       <video className="w-full" autoPlay muted loop>
         <source src="okjamhwa_website_background.mp4" type="video/mp4"/>        
       </video>

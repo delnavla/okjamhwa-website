@@ -22,7 +22,7 @@ export default function GeoContainer({
   
     const path = d3.geoPath().projection(projection);
     
-    d3.json("Yeongdong.geojson").then(function(geojson) {
+    d3.json("/Yeongdong.geojson").then(function(geojson) {
       const bounds = path.bounds(geojson);
       const widthScale = (bounds[1][0] - bounds[0][0]) / svg.attr("width");
       const heightScale = (bounds[1][1] - bounds[0][1]) / svg.attr("height");

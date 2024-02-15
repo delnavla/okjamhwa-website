@@ -2,7 +2,7 @@ import Image from "next/image";
 import Script from "next/script";
 import VideoContainer from "@/components/VideoContainer";
 import GeoContainer from "@/components/GeoContainer";
-import Header from "@/components/Header";
+import Header from "@/components/Header2";
 
 export default function Home() {
 
