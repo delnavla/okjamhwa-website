@@ -2,9 +2,12 @@
 import { useState, useEffect } from 'react';
 import Image from "next/image";
 import Link from 'next/link';
+import ChevronDown from '/public/chevron-down.svg';
+import Menu from '/public/menu.svg';
 
 export default function Header({
   position = 'relative',
+  landing = false
 }) {
 
   const [isScrolled, setIsScrolled] = useState(false);
@@ -32,52 +35,51 @@ export default function Header({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const invert = isScrolled || activeMenu || !landing
 
   return (
-    <header className={`${position} top-0 w-full transition-all z-50 h-20 ${isScrolled || activeMenu ? 'bg-[#fbf8f2]' : 'backdrop-blur-sm bg-gradient-to-b from-black/40 from-0% via-black/24 via-40% to-transparent to-100%'}`}
+    <header className={`${position} top-0 w-full z-50 h-24  ${invert ? 'bg-white border-b border-black' : 'backdrop-blur-sm bg-gradient-to-b from-black/40 from-0% via-black/24 via-40% to-transparent to-100%'}`}
       onMouseEnter={() => setActiveMenu(true)}
-      onMouseLeave={() => setActiveMenu(null)}   
+      onMouseLeave={() => setActiveMenu(false)}   
     >    
 
       <div className="flex w-full h-full px-4 justify-between max-w-screen-xl xl:mx-auto">
-        <div className={`flex items-center space-x-14 whitespace-nowrap font-pretendard font-bold ${isScrolled || activeMenu ? 'text-gray-700' : 'text-slate-50' }`}>
-          <Link href='#'>
+        <div className={`flex items-center space-x-14 whitespace-nowrap font-custom font-light ${invert ? 'text-gray-700' : 'text-slate-50' }`}>
+          <Link href='/'>
             <Image 
-              src={`/horizontalLogo2_${isScrolled || activeMenu ? 'black' : 'white'}.svg`}
+              src={`/horizontalLogo2_${invert ? 'black' : 'white'}.svg`}
               width={148}
               height={54}
               alt="logo"      
               priority={true}
             />
           </Link>
-
           {
-            Object.entries(navMenus).map(([menu, subMenus], index) => (
-              <li key={index} className='flex relative h-full items-center list-none text-lg'>
-                <Link href='#' className='hover:text-red-600'>{menu}</Link>
-                <ul className={`absolute top-full z-40 font-light text-base ${activeMenu ? 'h-20' : 'h-0 overflow-hidden' }`}>
-                  {subMenus.map((subMenu, subIndex) => (
-                      <li key={subIndex} className='py-2'>
-                        <Link href='#' className='hover:text-red-600'>{subMenu}</Link>
-                      </li>
-                  ))} 
-                </ul>
+            Object.keys(navMenus).map((menu, index) => (
+              <li key={index} className={`flex relative h-full items-center list-none text-lg ${activeMenu === menu ? 'text-red-600 font-normal' : ''}`}
+                onMouseEnter={() => setActiveMenu(menu)}>
+                <Link href='#' className='flex hover:text-red-600 items-center'>{menu}<ChevronDown/></Link>
+                <ul className={`bg-white w-40 border-solid border-[#494a52]  absolute top-3/4 font-light text-base shadow-[0_2px_9px_0px_rgba(0,0,0,.2)] left-1/2 -translate-x-1/2 ${activeMenu === menu ? 'border-[1px]' : 'h-0 overflow-hidden border-0' }`}>  
+                  <div className="bg-white w-[16px] h-[16px] border-[1px] border-solid border-[#494a52]  absolute top-0 content-none left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-45 shadow-[0_2px_9px_0px_rgba(0,0,0,.2)]"/>
+                  {                     
+                    navMenus[menu].map((subMenu, subIndex) => (
+                        <li key={subIndex} className='bg-white  border-b relative py-2 font-light text-center text-gray-700'>
+                          <Link href='#' className='hover:text-red-600 hover:font-normal block'>
+                            {subMenu}
+                          </Link>
+                        </li> 
+                    ))
+                  }
+                </ul>           
               </li>
             ))
           }
-
         </div>
         <div className='flex items-center'>
 
-          <Image 
-            src="/menu.svg"
-            width={40}
-            height={40}
-            alt="menu"      
-          />
+        <Menu/>
       </div>
       </div>
-      <section className={`${position} w-full bg-[#fbf8f2] transition-all duration-200 ease-out ${activeMenu ? 'h-64 ' :'h-0 overflow-hidden'}`}></section>
     </header>
   );
 }

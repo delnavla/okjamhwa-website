@@ -14,6 +14,11 @@ module.exports = {
       },
       fontFamily: {
         pretendard: ['Pretendard'],
+        thejamsil: ['TheJamsil'],
+        chosunsg: ['ChosunSg'],
+        gowundodum: ['GowunDodum'],
+        gowunbatang: ['GowunBatang'],
+        custom: ['TheJamsil']
       },
     },
   },

@@ -140,7 +140,7 @@ export default function Timeline() {
           .attr("dy", index === 0 ? 5 : 20) 
           .attr("text-anchor", i % 2 === 0 ? "end" : "start")
           .text(event)
-          .attr("font-family", "Pretendard")
+          .attr("font-family", "TheJamsil")
           .attr("font-size", "15px")
           .attr("font-weight", "200");
       });

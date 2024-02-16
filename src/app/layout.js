@@ -13,7 +13,7 @@ import Footer from "@/components/Footer";
 export default function RootLayout({ children }) {
   return (
     <html>
-      <body style={{ background: 'rgb(245, 245, 247)' }}>        
+      <body style={{ background: 'rgb(250, 250, 250)' }}>        
         {children}
         <Footer/>
       </body>

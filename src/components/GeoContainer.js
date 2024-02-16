@@ -50,9 +50,9 @@ export default function GeoContainer({
         .attr("text-anchor", "middle")
         .text(d => d.properties.EMD_KOR_NM)
         .attr("fill", "white")
-        .attr("font-family", "Pretendard")
+        .attr("font-family", "TheJamsil")
         .attr("font-size", "16px")
-        .attr("font-weight", "600");
+        .attr("font-weight", "400");
     });
   }, []);
 
