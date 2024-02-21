@@ -7,7 +7,9 @@ export default function History() {
     <>
       <Header/>
       <PictureContainer path={'Recipes_PLP_Drinks_Desktop_3.webp'} />
-      <Timeline/>
+      <div className="bg-white">
+        <Timeline/>
+      </div>
     </>    
   );
 };

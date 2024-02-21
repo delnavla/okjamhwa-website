@@ -21,7 +21,9 @@ export default function Business() {
     <>
       <Header/>
       <PictureContainer path={'Recipes_PLP_Drinks_Desktop_3.webp'} />
-      <MiddleSection array={['OEM 생산', '자체 생산']} activeMenu={activeMenu} setActiveMenu={setActiveMenu} />
+      <div className="bg-white">
+        <MiddleSection array={['OEM 생산', '자체 생산']} activeMenu={activeMenu} setActiveMenu={setActiveMenu} />
+      </div>
     </>    
   );
 };

@@ -18,7 +18,7 @@ module.exports = {
         chosunsg: ['ChosunSg'],
         gowundodum: ['GowunDodum'],
         gowunbatang: ['GowunBatang'],
-        custom: ['TheJamsil']
+        custom: ['Pretendard']
       },
     },
   },

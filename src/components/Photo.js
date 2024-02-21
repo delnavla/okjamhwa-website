@@ -47,13 +47,13 @@ export default function Photo({title, files}) {
   return (
       <div className="my-24">
 
-        <div className="flex absolute border-[1px] border-black w-28 h-16 -translate-y-1/2 bg-white font-custom justify-center items-center z-10 ">
+        <div className="flex absolute z-[5] border-[1px] border-black w-28 h-16 -translate-y-1/2 bg-white font-custom justify-center items-center z-10 ">
           {title}
         </div>
 
         <div className='relative w-full h-full'>
           { hasScroll &&
-          <button onClick={() => scroll('left')} className="absolute z-10 left-0 h-full group" >
+          <button onClick={() => scroll('left')} className="absolute z-[5] left-0 h-full group" >
             <Left width="72" height="72" viewBox="0 0 24 24" className="stroke-white stroke-1 drop-shadow-md opacity-70 group-hover:opacity-100" />
           </button>
           }

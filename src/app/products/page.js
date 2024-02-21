@@ -23,7 +23,9 @@ export default function Products() {
     <>
       <Header/>
       <PictureContainer path={'Recipes_PLP_Drinks_Desktop_3.webp'} />
-      <MiddleSection array={['잼', '포도음료', '과실차류']} activeMenu={activeMenu} setActiveMenu={setActiveMenu} />
+      <div className="bg-white">
+        <MiddleSection array={['잼', '포도음료', '과실차류', '농축액', '선물모음']} activeMenu={activeMenu} setActiveMenu={setActiveMenu} />
+      </div>
     </>
   );
 }

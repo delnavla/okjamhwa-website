@@ -32,11 +32,13 @@ export default function Certificate() {
     <>
       <Header/>
       <PictureContainer path={'Recipes_PLP_Drinks_Desktop_3.webp'} />
-      <MiddleSection array={Object.keys(certificate)} activeMenu={activeMenu} setActiveMenu={setActiveMenu}/>
-      <div className="flex py-20 h-full flex-wrap max-w-screen-xl m-auto content-normal gap-32 justify-start">
-        {
-          certificate[activeMenu].map( img => <Zoom key={img.name} img={img}/> )
-        }
+      <div className="bg-white">
+        <MiddleSection array={Object.keys(certificate)} activeMenu={activeMenu} setActiveMenu={setActiveMenu}/>
+        <div className="flex py-20 h-full flex-wrap max-w-screen-xl m-auto content-normal gap-32 justify-start">
+          {
+            certificate[activeMenu].map( img => <Zoom key={img.name} img={img}/> )
+          }
+        </div>
       </div>
     </>    
   );
