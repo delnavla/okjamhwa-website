@@ -1,11 +1,8 @@
-import Image from "next/image";
-import Script from "next/script";
 import VideoContainer from "@/components/VideoContainer";
 import GeoContainer from "@/components/GeoContainer";
 import Header from "@/components/Header";
 
 export default function Home() {
-
 
   return (
     <>
@@ -14,8 +11,10 @@ export default function Home() {
       data-device-type="PC" data-type="BASIC" data-channel-no="3072650" data-show-benefit="false"/> */}
       <Header position="sticky" landing={true}/>
       <main id="pageBody">
-        <VideoContainer/>                
-        <GeoContainer/>
+        <VideoContainer/>             
+        <div className="flex justify-center bg-white">           
+          <GeoContainer/>
+        </div>
       </main>
     </>
   );

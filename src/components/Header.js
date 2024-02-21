@@ -14,16 +14,31 @@ export default function Header({
   const [activeMenu, setActiveMenu] = useState(false);
 
   const navMenus = {
-    '회사소개': ['인사말', '조직도', '연혁', '비전', '인증서', '오시는 길'],
-    '시설설비': ['시설안내', '설비안내'],
-    '사업분야': ['OEM 생산', '자체 생산'],
-    '제품소개': ['잼', '포도음료', '과실차류'],
-    '고객센터': ['공지사항', '영상 게시판', '사진 게시판', '견적 문의', '견학 신청']
+    '회사소개': {
+      name: ['회사소개', '인증서'],
+      link: ['/company/about', '/company/certificates']
+    },
+    '시설설비': {
+      name: ['시설안내', '설비안내'],
+      link: ['/facilities?params=시설안내', '/facilities?params=설비안내']
+    },
+    '사업분야': {
+      name: ['OEM 생산', '자체 생산'],
+      link: ['/business?params=OEM%20생산', '/business?params=자체%20생산']
+    },
+    '제품소개': {
+      name: ['잼', '포도음료', '과실차류'],
+      link: ['/products?params=잼', '/products?params=포도음료', '/products?params=과실차류']
+    },
+    '고객센터': {
+      name: ['공지사항', '사진 게시판', '문의'],
+      link: ['/support/announcements', '/support/board', '/support/inquiry']
+    }
   }
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 200) {
+      if (window.scrollY > 600) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -38,7 +53,7 @@ export default function Header({
   const invert = isScrolled || activeMenu || !landing
 
   return (
-    <header className={`${position} top-0 w-full z-50 h-24  ${invert ? 'bg-white border-b border-black' : 'backdrop-blur-sm bg-gradient-to-b from-black/40 from-0% via-black/24 via-40% to-transparent to-100%'}`}
+    <header className={`${position} top-0 w-full z-10 h-24 ${invert ? 'bg-white' : 'backdrop-blur-sm bg-gradient-to-b from-black/40 from-0% via-black/24 via-40% to-transparent to-100%'}`}
       onMouseEnter={() => setActiveMenu(true)}
       onMouseLeave={() => setActiveMenu(false)}   
     >    
@@ -56,15 +71,15 @@ export default function Header({
           </Link>
           {
             Object.keys(navMenus).map((menu, index) => (
-              <li key={index} className={`flex relative h-full items-center list-none text-lg ${activeMenu === menu ? 'text-red-600 font-normal' : ''}`}
+              <li key={index} className={`flex relative h-full items-center list-none text-lg  ${activeMenu === menu ? 'text-red-600 font-normal' : ''}`}
                 onMouseEnter={() => setActiveMenu(menu)}>
-                <Link href='#' className='flex hover:text-red-600 items-center'>{menu}<ChevronDown/></Link>
+                <Link href={navMenus[menu].link[0]} className='flex hover:text-red-600 items-center'>{menu}<ChevronDown/></Link>
                 <ul className={`bg-white w-40 border-solid border-[#494a52]  absolute top-3/4 font-light text-base shadow-[0_2px_9px_0px_rgba(0,0,0,.2)] left-1/2 -translate-x-1/2 ${activeMenu === menu ? 'border-[1px]' : 'h-0 overflow-hidden border-0' }`}>  
                   <div className="bg-white w-[16px] h-[16px] border-[1px] border-solid border-[#494a52]  absolute top-0 content-none left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-45 shadow-[0_2px_9px_0px_rgba(0,0,0,.2)]"/>
-                  {                     
-                    navMenus[menu].map((subMenu, subIndex) => (
-                        <li key={subIndex} className='bg-white  border-b relative py-2 font-light text-center text-gray-700'>
-                          <Link href='#' className='hover:text-red-600 hover:font-normal block'>
+                  {                   
+                    navMenus[menu].name.map((subMenu, subIndex) => (
+                        <li key={subIndex} className='bg-white border-b relative py-2 font-light text-center text-gray-700'>
+                          <Link href={navMenus[menu].link[subIndex]} className='hover:text-red-600 hover:font-normal block'>
                             {subMenu}
                           </Link>
                         </li> 

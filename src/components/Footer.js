@@ -5,11 +5,10 @@ export default function Footer() {
   return (
     <footer className="w-full h-36 py-8 border-t-[1px] border-solid border-neutral-300">
       <section className="flex px-6 max-w-screen-xl justify-between m-auto font-custom">
-      <div className="text-gray-600 text-sm font-light leading-loose">
+      <div className="relative text-gray-600 text-sm font-light leading-loose w-[120px] h-[60px]">
         <Image 
           src={'/horizontalLogo1_Gray.svg'}
-          width={120}
-          height={60}
+          fill
           alt="logo"      
         />
 
