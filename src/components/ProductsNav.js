@@ -10,7 +10,7 @@ function ProductCategory({category, products, link}) {
   return (
     <>
       <div>
-        <Image src={`/products/${category}/${activeMenu}.jpg`} height={250} width={250} alt={activeMenu} />
+        <Image src={`/products/${activeMenu}.jpg`} height={250} width={250} alt={activeMenu} />
         <div className="text-center font-custom font-medium py-2">
           <Link href={link}>
             {category}

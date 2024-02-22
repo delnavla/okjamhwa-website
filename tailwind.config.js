@@ -22,5 +22,13 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwind-scrollbar-hide"), "prettier-plugin-tailwindcss"],
+  plugins: [require("tailwind-scrollbar-hide"), "prettier-plugin-tailwindcss",
+    function({ addVariant, e }) {
+      addVariant('nth-child-4n', ({ modifySelectors, separator }) => {
+        modifySelectors(({ className }) => {
+          return `.${e(`nth-child-4n${separator}${className}`)}:nth-child(4n)`;
+        });
+      });
+    }
+],
 };
