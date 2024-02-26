@@ -1,5 +1,4 @@
 'use client'
-import Header from "@/components/Header";
 import MiddleSection from "@/components/MiddleSection";
 import PictureContainer from "@/components/PictureContainer";
 import { useSearchParams } from "next/navigation";
@@ -19,7 +18,6 @@ export default function Business() {
 
   return (
     <>
-      <Header/>
       <PictureContainer path={'Recipes_PLP_Drinks_Desktop_3.webp'} />
       <div className="bg-white">
         <MiddleSection array={['OEM 생산', '자체 생산']} activeMenu={activeMenu} setActiveMenu={setActiveMenu} />

@@ -1,5 +1,4 @@
 'use client'
-import Header from "@/components/Header";
 import MiddleSection from "@/components/MiddleSection";
 import Photo from "@/components/Photo";
 import PictureContainer from "@/components/PictureContainer";
@@ -20,7 +19,6 @@ export default function Facilities() {
 
   return (
     <>
-      <Header/>
       <PictureContainer path={'Recipes_PLP_Drinks_Desktop_3.webp'} />
       <div className="bg-white">
         <MiddleSection array={['시설안내', '설비안내']} activeMenu={activeMenu} setActiveMenu={setActiveMenu} />

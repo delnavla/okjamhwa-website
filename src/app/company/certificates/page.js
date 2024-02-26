@@ -1,5 +1,4 @@
 'use client'
-import Header from "@/components/Header";
 import MiddleSection from "@/components/MiddleSection";
 import PictureContainer from "@/components/PictureContainer";
 import Zoom from "@/components/Zoom";
@@ -30,7 +29,6 @@ export default function Certificate() {
 
   return (
     <>
-      <Header/>
       <PictureContainer path={'Recipes_PLP_Drinks_Desktop_3.webp'} />
       <div className="bg-white">
         <MiddleSection array={Object.keys(certificate)} activeMenu={activeMenu} setActiveMenu={setActiveMenu}/>

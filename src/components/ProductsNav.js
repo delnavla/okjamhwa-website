@@ -19,10 +19,14 @@ function ProductCategory({category, products, link}) {
         <ul className="leading-loose text-center font-custom font-light">
           {
             products.map((product, index) => {
-              return <li key={index} className="hover:text-red-600 hover:font-normal hover:cursor-pointer"
-                  onMouseOver={() => setActiveMenu(product)}
-                  onMouseOut={() => setActiveMenu(product)}
-                >{product}</li>
+              return (
+                <Link href={`/products/${product}`}>
+                  <li key={index} className="hover:text-red-600 hover:font-normal hover:cursor-pointer"
+                      onMouseOver={() => setActiveMenu(product)}
+                      onMouseOut={() => setActiveMenu(product)}
+                    >{product.split('_')[0]}</li>
+                </Link>
+              )
             })
           }
         </ul>
@@ -34,11 +38,11 @@ function ProductCategory({category, products, link}) {
 export default function ProductsNav({navMenus}){
 
   const products = {
-    잼: ['딸기잼', '포도잼', '참다래잼', '블루베리잼', '사과잼'],
-    포도음료: ['포도즙', '상큼한 포도'],
-    과실차류: ['생강차', '모과차', '유자차'],
-    농축액: ['배농축액', '사과농축액'],
-    선물모음: ['잼선물모음', '차선물모음']
+    잼: ['딸기잼_280g', '포도잼_280g', '참다래잼_280g', '블루베리잼_280g', '사과잼_280g'],
+    포도음료: ['포도즙_120ml', '상큼한 포도_120ml'],
+    과실차류: ['생강차_460g', '모과차_460g', '유자차_460g'],
+    농축액: ['배농축액_480g', '사과농축액_480g'],
+    선물모음: ['잼선물모음_280g', '차선물모음_460g']
   }
 
   return (

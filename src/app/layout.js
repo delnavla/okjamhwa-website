@@ -1,4 +1,5 @@
 // import { Inter } from "next/font/google";
+// import Header from "@/components/Header";
 import Header from "@/components/Header";
 import "./globals.css";
 import Footer from "@/components/Footer";
@@ -11,10 +12,12 @@ import Footer from "@/components/Footer";
 // };
 
 export default function RootLayout({ children }) {
+
   return (
     <html>
       <body style={{ background: 'rgb(250, 250, 250)' }}>        
-        {children}
+        <Header/>
+        <main>{children}</main>        
         <Footer/>
       </body>
     </html>
