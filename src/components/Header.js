@@ -64,7 +64,7 @@ export default function Header() {
         >    
           <div className={`flex relative z-[5] w-full ${invert ? 'bg-white' : ''} h-full px-4 justify-between max-w-screen-xl xl:mx-auto`}>
             <div className={`flex items-center space-x-14 whitespace-nowrap font-custom font-light ${invert ? 'text-gray-700' : 'text-slate-50' }`}>
-              <Link href='/'>
+              <Link href='/' scroll={false}>
                 <Image 
                   src={`/horizontalLogo2_${invert ? 'black' : 'white'}.svg`}
                   width={148}
@@ -77,14 +77,14 @@ export default function Header() {
                 Object.keys(navMenus).map((menu, index) => (
                   <li key={index} className={`flex relative h-full items-center list-none text-lg  ${activeMenu === menu ? 'text-red-600 font-normal' : ''}`}
                     onMouseEnter={() => setActiveMenu(menu)}>
-                    <Link href={`${ menu != '제품소개' ? navMenus[menu].link[0] : '#'}`} className='flex hover:text-red-600 items-center'>{menu}<ChevronDown/></Link>
+                    <Link href={`${ menu != '제품소개' ? navMenus[menu].link[0] : '#'}`} className='flex hover:text-red-600 items-center' scroll={false}>{menu}<ChevronDown/></Link>
                     { menu != '제품소개' && 
                       <ul className={`bg-white w-40 border-solid border-[#494a52] absolute top-3/4 font-light text-base shadow-[0_2px_9px_0px_rgba(0,0,0,.2)] left-1/2 -translate-x-1/2 ${activeMenu === menu ? 'border-[1px]' : 'h-0 overflow-hidden border-0' }`}>  
                         <div className="bg-white w-[16px] h-[16px] border-[1px] border-solid border-[#494a52] absolute top-0 content-none left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-45 shadow-[0_2px_9px_0px_rgba(0,0,0,.2)]"/>
                         {                   
                           navMenus[menu].name.map((subMenu, subIndex) => (
                             <li key={subIndex} className='bg-white border-b relative py-2 font-light text-center text-gray-700'>
-                                <Link href={navMenus[menu].link[subIndex]} className='hover:text-red-600 hover:font-normal block'>
+                                <Link href={navMenus[menu].link[subIndex]} className='hover:text-red-600 hover:font-normal block' scroll={false}>
                                   {subMenu}
                                 </Link>
                             </li> 

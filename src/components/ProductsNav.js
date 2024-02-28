@@ -10,24 +10,26 @@ function ProductCategory({category, products, link}) {
   return (
     <>
       <div>
-        <Image src={`/products/${activeMenu}.jpg`} height={250} width={250} alt={activeMenu} />
+        <div className="overflow-hidden">
+          <Link href={link} scroll={false}>
+            <Image src={`/products/${activeMenu}.jpg`} height={250} width={250} alt={activeMenu} className="cursor-pointer transition hover:scale-105"/>
+          </Link>
+        </div>
         <div className="text-center font-custom font-medium py-2">
-          <Link href={link}>
+          <Link href={link} scroll={false}>
             {category}
           </Link>
         </div>
         <ul className="leading-loose text-center font-custom font-light">
           {
-            products.map((product, index) => {
-              return (
-                <Link href={`/products/${product}`}>
-                  <li key={index} className="hover:text-red-600 hover:font-normal hover:cursor-pointer"
-                      onMouseOver={() => setActiveMenu(product)}
-                      onMouseOut={() => setActiveMenu(product)}
-                    >{product.split('_')[0]}</li>
-                </Link>
-              )
-            })
+            products.map((product, index) => (
+              <Link href={`/products/${product}`} key={index} scroll={false}>
+                <li  className="hover:text-red-600 hover:font-normal hover:cursor-pointer"
+                    onMouseOver={() => setActiveMenu(product)}
+                    onMouseOut={() => setActiveMenu(product)}
+                  >{product.split('_')[0]}</li>
+              </Link>
+            ))
           }
         </ul>
       </div>

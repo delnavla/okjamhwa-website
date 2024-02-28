@@ -38,7 +38,9 @@ export default function Products() {
           selectedProducts.map( (product, index) =>         
             <div key={index} className="w-[275px] h-auto text-center font-custom">    
               <Link href={`/products/${product}`}>
-                <Image src={`/products/${product}.jpg`} height={275} width={275} alt={product} />
+                <div className="overflow-hidden">
+                  <Image src={`/products/${product}.jpg`} height={275} width={275} alt={product} className="transition hover:scale-105"/>
+                </div>
               </Link>
                 <div className="h-24">
                   <p>{product.split('_')[0]}</p>

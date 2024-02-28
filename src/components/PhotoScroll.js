@@ -4,8 +4,9 @@ import FullScreen from '/public/interface-arrows-expand-3--expand-smaller-retrac
 import Left from '/public/chevron-left.svg';
 import Right from '/public/chevron-right.svg';
 import Image from 'next/image';
+import CarouselFullScreen from './CarouselFullScreen';
 
-export default function Photo({title, files}) {
+export default function PhotoScroll({title, files}) {
 
   const scrollAmount = 500; 
   const [hasScroll, setHasScroll] = useState(false);
@@ -14,6 +15,9 @@ export default function Photo({title, files}) {
   const [isDrag, setIsDrag] = useState(false)
   const [startX, setStartX] = useState(0)
   const [scrollLeft, setScrollLeft] = useState(0)
+
+  const [isFullScreen, setIsFullScreen] = useState(false)
+  const [imgIndex, setImgIndex] = useState(0)
 
   const scroll = (direction) => {
     if (photoRef.current) {
@@ -44,6 +48,12 @@ export default function Photo({title, files}) {
     e.currentTarget.scrollLeft = scrollLeft - (x - startX) * 0.4;
   }
 
+
+  const onClick = (index) => {
+    setIsFullScreen(true)
+    setImgIndex(index)
+  }
+
   return (
       <div className="my-24">
 
@@ -69,16 +79,15 @@ export default function Photo({title, files}) {
           {
             files.map((img, index) => (
               <div key={index}>             
-                <div  className={`relative min-h-80 min-w-80 border-[1px] border-black cursor-pointer group ${index === files.length - 1 ? 'mr-0' : 'mr-4' }`}>
+                <div  className={`relative min-h-80 min-w-80 border-[1px] border-black cursor-pointer group overflow-hidden ${index === files.length - 1 ? 'mr-0' : 'mr-4' }`}
+                  onClick={() => onClick(index)}>
                   <Image 
                     src={`/${title}/${img}`}
                     alt={img}
                     fill
                     sizes="320px"                  
                     quality={50}
-                    style={{
-                      objectFit: 'cover',
-                    }}
+                    className='object-cover transition hover:scale-105'
                   />
                   <div className='absolute rounded-full top-0 right-0 m-2 flex w-[25px] h-[25px] justify-center items-center bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
                     <FullScreen/>
@@ -86,7 +95,7 @@ export default function Photo({title, files}) {
                 </div>
                 <div className='font-custom text-center font-light'>
                   {img.split('_')[1].split('.')[0]}
-                </div>
+                </div>                
               </div>
             ))
           }
@@ -97,6 +106,7 @@ export default function Photo({title, files}) {
           </button>
           }
         </div>      
+        {isFullScreen && <CarouselFullScreen files={files} title={title} imgIndex={imgIndex} setImgIndex={setImgIndex} setIsFullScreen={setIsFullScreen} />}
       </div>
   );
 }

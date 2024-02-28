@@ -1,3 +1,4 @@
+import Link from "next/link";
 
 
 export default function AdminLayout({children}) {
@@ -8,8 +9,8 @@ export default function AdminLayout({children}) {
         <nav className="flex justify-center w-52 h-full font-custom">
           <div>
             <ul>
-              <li>공지사항</li>
-              <li>사진 게시판</li>
+              <li><Link href='/support/notice/'>공지사항</Link></li>
+              <li><Link href='/support/board/'>사진 게시판</Link></li>
             </ul>
           </div>
         </nav>

@@ -82,11 +82,11 @@ export default function Editor({
     namespace: 'MyEditor',
     theme,
     onError,
-    nodes: [
-      HeadingNode,
-      ListNode,
-      ListItemNode,
-    ],
+    // nodes: [
+    //   HeadingNode,
+    //   ListNode,
+    //   ListItemNode,
+    // ],
     editable: editable,
     editorState: initialEditorState,
   };
@@ -102,7 +102,7 @@ export default function Editor({
       {/* <ToolbarPlugin /> */}
       {/* <ListPlugin /> */}
       <RichTextPlugin
-        contentEditable={<ContentEditable className={`w-2/5 p-2 ${ editable ? 'h-96 border border-black overflow-auto overflow-x-hidden ': ''}`}/>}
+        contentEditable={<ContentEditable className={`${ editable ? 'w-2/5 h-96 p-2 border border-black overflow-auto overflow-x-hidden ': 'w-full'}`}/>}
         placeholder={
           editable ? <div className='absolute p-2 top-9 '>Enter some text...</div> : null
         }
