@@ -7,6 +7,7 @@ import Menu from '/public/menu.svg';
 import ProductsNav from './ProductsNav';
 import { CSSTransition } from 'react-transition-group';
 import { usePathname } from 'next/navigation';
+import Shopping from '/public/shopping-bag-hand-bag-2--shopping-bag-purse-goods-item-products.svg'
 
 export default function Header() {
 
@@ -97,7 +98,9 @@ export default function Header() {
               }
             </div>
             <div className='flex items-center'>
-              <Menu/>
+              <Link href={"https://smartstore.naver.com/okjamhwa"}>
+                <Shopping width="28" height="28" viewBox="0 0 14 14" className={`${invert ? 'stroke-black' : 'stroke-white'}`}/>
+              </Link>
             </div>
           </div>
 

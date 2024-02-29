@@ -12,14 +12,6 @@ export default function Products() {
   const params  = useSearchParams();
   const [selectedProducts, setSelectedProducts] = useState([]);
 
-  // const products = {
-  //   잼: ['딸기잼', '포도잼', '참다래잼', '블루베리잼', '사과잼'],
-  //   포도음료: ['포도즙', '상큼한 포도'],
-  //   과실차류: ['생강차', '모과차', '유자차'],
-  //   농축액: ['배농축액', '사과농축액'],
-  //   선물모음: ['잼선물모음', '차선물모음']
-  // }
-
   const products = {
     잼: ['딸기잼_280g', '딸기잼_480g', '포도잼_280g', '참다래잼_280g', '블루베리잼_280g', '사과잼_280g'],
     포도음료: ['포도즙_120ml', '상큼한 포도_120ml'],
@@ -44,7 +36,7 @@ export default function Products() {
               </Link>
                 <div className="h-24">
                   <p>{product.split('_')[0]}</p>
-                  <p>{product.split('_')[1]}</p>
+                  <p className="font-light">{product.split('_')[1]}</p>
                 </div>
             </div>
           )

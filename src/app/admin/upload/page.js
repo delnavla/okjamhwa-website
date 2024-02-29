@@ -6,10 +6,17 @@ export default function Upload() {
 
   const [files, setFiles] = useState([])
   const [fileUrls, setFileUrls] = useState([])
+  const [title, setTitle] = useState([])
 
   const handleSubmit = async (e) => {
 
     e.preventDefault()
+
+    if (title == '') {
+      alert("제목을 입력해주세요.")
+      return
+    }
+
     let uploadedFiles = []
 
     if (files.length) {
@@ -40,6 +47,9 @@ export default function Upload() {
         document.getElementById('s3-url').value = JSON.stringify(uploadedFiles);
         document.querySelector('form').submit();
       }
+    } else {
+      alert('사진을 선택해주세요.')
+      return
     }
   }
 
@@ -56,10 +66,14 @@ export default function Upload() {
     setFileUrls(urls)
   }
 
+  const handleTitleChange = (e) => {
+    setTitle(e.target.value)
+  }
+
   return (
     <>
       <form action="/api/post/upload" method="POST" onSubmit={handleSubmit}>
-        <input name="title" placeholder="title" className="border border-black pl-2 py-1 w-2/5"/>
+        <input name="title" placeholder="title" value={title} onChange={handleTitleChange} className="border border-black pl-2 py-1 w-2/5"/>
         <input type="hidden" id="s3-url" name="url"/>
         <button type="submit" className="border border-black p-1 mt-2">업로드</button>
       </form>

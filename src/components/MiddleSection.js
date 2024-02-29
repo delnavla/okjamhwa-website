@@ -5,7 +5,7 @@ export default function MiddleSection({
   activeMenu, 
   setActiveMenu, 
   client=true,
-  link
+  link,
 }) {
 
   const odd = array.length % 2

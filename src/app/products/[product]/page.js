@@ -6,7 +6,7 @@ export default function Product({params}) {
   
   return (
     <>
-      <PictureContainer path={'Recipes_PLP_Drinks_Desktop_3.webp'} />
+      <PictureContainer path={'Recipes_PLP_Drinks_Desktop_3.webp'} title={'test title'} content={'test content'} />
       <div className="bg-white">
         <div className="max-w-screen-md m-auto py-20">
         {          

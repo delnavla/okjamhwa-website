@@ -1,7 +1,9 @@
 'use client'
 import { useEffect, useState } from 'react';
 import FullScreen from '/public/interface-arrows-expand-3--expand-smaller-retract-bigger-big-small-diagonal.svg';
+import Delete from "/public/interface-delete-bin-2--remove-delete-empty-bin-trash-garbage.svg";
 import CarouselFullScreen from './CarouselFullScreen';
+import { useRouter } from 'next/navigation';
 
 export default function PhotoGrid({ collection }) {
 
@@ -9,10 +11,11 @@ export default function PhotoGrid({ collection }) {
   const [imgIndex, setImgIndex] = useState(0)
   const [files, setFiles] = useState()
 
+  const router = useRouter()
+
   const onClick = (img) => {
     setFiles(img.url)
     setIsFullScreen(true)
-    console.log(img)
   }
 
   useEffect(() => {
@@ -20,6 +23,18 @@ export default function PhotoGrid({ collection }) {
       setImgIndex(0)
     };
   }, [isFullScreen])
+
+  function handleDeleteClick(event, body) {
+    event.stopPropagation(); 
+    if (confirm("삭제하시겠습니까?")) {
+      fetch('/api/post/upload', { method : 'DELETE', body: JSON.stringify(body) })
+      .then((r)=>{
+        if (r.status == 200) {
+        return router.refresh()
+        }
+      })
+    }
+  }
 
   return (
     <>
@@ -36,6 +51,9 @@ export default function PhotoGrid({ collection }) {
           </div>
           <p>{img.title}</p>
           <p className='font-light text-sm'>{img.date.toISOString().slice(0, 10)}</p>
+          <div className='flex items-center'>
+            <Delete onClick={(e) => handleDeleteClick(e, img)} className="cursor-pointer m-auto"/>
+          </div>
         </div>
       ))}
       {isFullScreen && <CarouselFullScreen files={files} imgIndex={imgIndex} setImgIndex={setImgIndex} setIsFullScreen={setIsFullScreen}/>}
