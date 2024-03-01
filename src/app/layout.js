@@ -3,6 +3,7 @@
 import Header from "@/components/Header";
 import "./globals.css";
 import Footer from "@/components/Footer";
+import Script from "next/script";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -14,8 +15,8 @@ import Footer from "@/components/Footer";
 export default function RootLayout({ children }) {
 
   return (
-    <html>
-      <body style={{ background: 'rgb(250, 250, 250)' }}>        
+    <html>      
+      <body style={{ background: 'rgb(250, 250, 250)' }}>              
         <Header/>
         <main>{children}</main>        
         <Footer/>

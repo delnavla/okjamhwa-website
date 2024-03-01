@@ -41,6 +41,10 @@ export default function History() {
 
   return (
     <>
+      <Script
+        type="text/javascript" 
+        src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY}&autoload=false`}
+      />
       <PictureContainer path={'Recipes_PLP_Drinks_Desktop_3.webp'} title={'메뉴에 대한 설명'} content={'하고싶은 말'}/>
       
       <div className="bg-white ">
@@ -56,10 +60,6 @@ export default function History() {
 function KakaoMap() {
   return (
     <div className="flex justify-center h-full w-full">
-      <Script
-        type="text/javascript" 
-        src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY}&autoload=false`}
-      />
       <Map 
         center={{
           lat: 36.213663,
