@@ -1,10 +1,11 @@
+'use client'
+import { SessionProvider } from "next-auth/react";
 import Link from "next/link";
-
 
 export default function AdminLayout({children}) {
 
   return (
-    <>
+    <SessionProvider>
       <div className="w-52 h-full fixed">
         <nav className="flex justify-center w-52 h-full font-custom">
           <div>
@@ -18,6 +19,6 @@ export default function AdminLayout({children}) {
       <div className="relative mt-12 ml-52 ">
         {children}
       </div>
-    </>
+    </SessionProvider>
   )
 }

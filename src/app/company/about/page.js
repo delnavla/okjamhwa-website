@@ -45,7 +45,7 @@ export default function History() {
         type="text/javascript" 
         src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY}&autoload=false`}
       />
-      <PictureContainer path={'Recipes_PLP_Drinks_Desktop_3.webp'} title={'메뉴에 대한 설명'} content={'하고싶은 말'}/>
+      <PictureContainer path={'middle_section/img1.jpg'} title={'메뉴에 대한 설명'} content={'하고싶은 말'}/>
       
       <div className="bg-white ">
         <MiddleSection array={['인사말', '비전', '연혁', '오시는 길']} activeMenu={activeMenu} setActiveMenu={setActiveMenu}/>

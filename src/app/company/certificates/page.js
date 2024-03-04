@@ -29,7 +29,7 @@ export default function Certificate() {
 
   return (
     <>
-      <PictureContainer path={'Recipes_PLP_Drinks_Desktop_3.webp'} />
+      <PictureContainer path={'middle_section/img1.jpg'} title={'메뉴에 대한 설명'} content={'하고싶은 말'}/>
       <div className="bg-white">
         <MiddleSection array={Object.keys(certificate)} activeMenu={activeMenu} setActiveMenu={setActiveMenu}/>
         <div className="flex py-20 h-full flex-wrap max-w-screen-xl m-auto content-normal gap-32 justify-start">

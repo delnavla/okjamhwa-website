@@ -4,8 +4,15 @@ import FullScreen from '/public/interface-arrows-expand-3--expand-smaller-retrac
 import Delete from "/public/interface-delete-bin-2--remove-delete-empty-bin-trash-garbage.svg";
 import CarouselFullScreen from './CarouselFullScreen';
 import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
+import Link from "next/link";
+import Write from "/public/interface-edit-write-2--change-document-edit-modify-paper-pencil-write-writing.svg";
 
 export default function PhotoGrid({ collection }) {
+
+  const { data: session, status } = useSession();
+
+  let isAdmin = status === "authenticated"
 
   const [isFullScreen, setIsFullScreen] = useState(false)
   const [imgIndex, setImgIndex] = useState(0)
@@ -38,6 +45,8 @@ export default function PhotoGrid({ collection }) {
 
   return (
     <>
+      {isAdmin && <Link href='/admin/post/upload' scroll={false}><Write width="28" height="28" viewBox="0 0 14 14" className="my-6"/></Link>}
+      <div className="grid grid-cols-3 gap-6 " >
       {collection.map((img, index) => (
         <div key={index} className='text-center'>
           <div className='relative overflow-hidden rounded-lg group' onClick={()=>{onClick(img)}}>
@@ -57,6 +66,7 @@ export default function PhotoGrid({ collection }) {
         </div>
       ))}
       {isFullScreen && <CarouselFullScreen files={files} imgIndex={imgIndex} setImgIndex={setImgIndex} setIsFullScreen={setIsFullScreen}/>}
+      </div>
     </>
   );
 }

@@ -2,8 +2,6 @@ import { connectDB } from "@/util/database";
 import PictureContainer from "@/components/PictureContainer";
 import MiddleSection from "@/components/MiddleSection";
 import PhotoGrid from "@/components/PhotoGrid";
-import Link from "next/link";
-import Write from "/public/interface-edit-write-2--change-document-edit-modify-paper-pencil-write-writing.svg";
 
 export default async function Notice() {
 
@@ -21,14 +19,11 @@ export default async function Notice() {
 
   return (
     <>
-      <PictureContainer path={'Recipes_PLP_Drinks_Desktop_3.webp'} />
+      <PictureContainer path={'middle_section/img6.png'}/>
       <div className="bg-white">
         <MiddleSection array={array} activeMenu={'사진 게시판'} client={false} link={link}/>
-        <div className="max-w-screen-xl py-20 m-auto font-custom">
-          <Link href='/admin/upload'><Write width="28" height="28" viewBox="0 0 14 14" className="my-6"/></Link>
-          <div className="grid grid-cols-3 gap-6 " >
-            <PhotoGrid collection={collection}/>              
-          </div>
+        <div className="max-w-screen-xl py-20 m-auto font-custom">          
+          <PhotoGrid collection={collection}/>              
         </div>
       </div>
     </>

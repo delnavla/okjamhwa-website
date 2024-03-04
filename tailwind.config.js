@@ -18,7 +18,12 @@ module.exports = {
         chosunsg: ['ChosunSg'],
         gowundodum: ['GowunDodum'],
         gowunbatang: ['GowunBatang'],
-        custom: ['TheJamsil']
+        nanumSquare: ['NanumSquare'],
+        nanumSquareNeo: ['NanumSquareNeo'],
+        nanumBarunGothic: ['NanumBarunGothic'],
+        nanumGothic: ['NanumGothic'],
+        hyemin :['IMHyemin'],
+        custom: ['NanumBarunGothic']
       },
     },
   },

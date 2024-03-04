@@ -19,7 +19,7 @@ export default function Facilities() {
 
   return (
     <>
-      <PictureContainer path={'Recipes_PLP_Drinks_Desktop_3.webp'} />
+      <PictureContainer path={'middle_section/img6.png'} />
       <div className="bg-white">
         <MiddleSection array={['시설안내', '설비안내']} activeMenu={activeMenu} setActiveMenu={setActiveMenu} />
         <div className="max-w-screen-xl m-auto">

@@ -8,8 +8,13 @@ import Link from "next/link";
 import Write from "/public/interface-edit-write-2--change-document-edit-modify-paper-pencil-write-writing.svg";
 import Edit from "/public/interface-edit-scissors--clipboard-copy-cut-paste-right-scissors.svg";
 import Delete from "/public/interface-delete-bin-2--remove-delete-empty-bin-trash-garbage.svg";
+import { useSession } from "next-auth/react";
 
 export default function Table({collection}) {
+
+  const { data: session, status } = useSession();
+
+  let isAdmin = status === "authenticated"
 
   const router = useRouter()
   const [contentId, setContentId] = useState(null);
@@ -23,10 +28,12 @@ export default function Table({collection}) {
     }
   };
 
+  
+
   function handleEditClick(event, post) {
     event.stopPropagation(); 
     const queryString = new URLSearchParams(post).toString();
-    router.push(`/admin/edit?${queryString}`)
+    router.push(`/admin/post/edit?${queryString}`)
   }
 
   function handleDeleteClick(event, id) {
@@ -48,7 +55,7 @@ export default function Table({collection}) {
         <div className="table table-fixed relative w-full">
             <p className="table-cell min-h-12 py-4 w-36 text-center">번호</p>
             <p className="table-cell min-h-12 py-4">제목</p>
-            <p className="table-cell min-h-12 w-20 p-4"><Link href='/admin/write'><Write width="28" height="28" viewBox="0 0 14 14" className="m-auto"/></Link></p>
+            {isAdmin && <p className="table-cell min-h-12 w-20 p-4"><Link href='/admin/post/write' scroll={false}><Write width="28" height="28" viewBox="0 0 14 14" className="m-auto"/></Link></p>}          
             <p className="table-cell min-h-12 py-4 w-32 text-center">등록일</p>
           </div>
       </div>
@@ -57,8 +64,12 @@ export default function Table({collection}) {
           <div className="table table-fixed relative w-full cursor-pointer" onClick={() => toggleContent(post._id)}>
             <p className="table-cell min-h-12 py-4 w-36 text-center">{collection.length - index}</p>
             <p className="table-cell min-h-12 py-4">{post.title}</p>
-            <p className="table-cell w-10 py-4" onClick={(e) => handleEditClick(e, post)}><Edit className="m-auto"/></p>
-            <p className="table-cell w-10 py-4" onClick={(e) => handleDeleteClick(e, post._id)}><Delete className="m-auto"/></p>
+            { isAdmin && 
+              <>
+                <p className="table-cell w-10 py-4" onClick={(e) => handleEditClick(e, post)}><Edit className="m-auto"/></p>
+                <p className="table-cell w-10 py-4" onClick={(e) => handleDeleteClick(e, post._id)}><Delete className="m-auto"/></p>
+              </>
+            }
             <p className="table-cell min-h-12 py-4 w-32 text-center">{post.date.toISOString().slice(0, 10)}</p>
           </div>
           { contentId === post._id &&

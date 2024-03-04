@@ -4,10 +4,12 @@ import Image from "next/image";
 import Link from 'next/link';
 import ChevronDown from '/public/chevron-down.svg';
 import Menu from '/public/menu.svg';
-import ProductsNav from './ProductsNav';
+import X from '/public/x.svg';
+import LeftArrow from '/public/chevron-left.svg'
 import { CSSTransition } from 'react-transition-group';
 import { usePathname } from 'next/navigation';
 import Shopping from '/public/shopping-bag-hand-bag-2--shopping-bag-purse-goods-item-products.svg'
+
 
 export default function Header() {
 
@@ -42,6 +44,14 @@ export default function Header() {
       name: ['공지사항', '사진 게시판', '문의'],
       link: ['/support/notice', '/support/board', '/support/inquiry']
     }
+  }
+
+  const products = {
+    잼: ['딸기잼_280g', '포도잼_280g', '참다래잼_280g', '블루베리잼_280g', '사과잼_280g'],
+    포도음료: ['포도즙_120ml', '상큼한 포도_120ml'],
+    과실차류: ['생강차_460g', '모과차_460g', '유자차_460g'],
+    농축액: ['배농축액_480g', '사과농축액_480g'],
+    선물모음: ['잼선물모음_280g', '차선물모음_460g']
   }
 
   useEffect(() => {
@@ -133,7 +143,7 @@ export default function Header() {
               unmountOnExit   
             >
               <div ref={nodeRef}>
-                <ProductsNav navMenus={navMenus}/> 
+                <ProductsNav navMenus={navMenus} products={products}/> 
               </div>
             </CSSTransition>
           </header>
@@ -141,37 +151,100 @@ export default function Header() {
           <header ref={headerRef} className='sticky relative top-0 w-full z-10 h-16 xl:hidden bg-white border-b font-custom'>    
             <div className='flex h-full relative justify-center items-center'>
               <Link href='/' scroll={false}>
-                  <Image 
-                    src={`/horizontalLogo2_black.svg`}
-                    width={100}
-                    height={40}
-                    alt="logo"      
-                    priority={true}
-                  />
+                <Image 
+                  src={`/horizontalLogo2_black.svg`}
+                  width={100}
+                  height={40}
+                  alt="logo"      
+                  priority={true}
+                />
               </Link>
-              <div className='absolute left-0 p-5' onClick={handleToggleMenu}>
-                <Menu/>
+              <div className='absolute left-0 p-5 cursor-pointer' onClick={handleToggleMenu}>
+                { toggleMenu ? <X className='pointer-events-none'/> : <Menu className='pointer-events-none'/> }
               </div>
               <Link href={"https://smartstore.naver.com/okjamhwa"} className='absolute right-0 p-5'>
-                  <Shopping width="24" height="24" viewBox="0 0 14 14" className='stroke-black inline'/>
+                <Shopping width="24" height="24" viewBox="0 0 14 14" className='stroke-black inline'/>
               </Link>
             </div>
             
             <div className={`absolute left-0 w-80 top-16 h-screen bg-white transition-transform ${toggleMenu ? 'translate-x-0': '-translate-x-full'}`}>
-              {
-                Object.keys(navMenus).map((menu, index) => (
-                  <li key={index} className='border-b p-5 list-none '>
-                    <Link href={`${ menu != '제품소개' ? navMenus[menu].link[0] : '#'}`} className='flex hover:text-red-600 items-center' scroll={false} onClick={handleToggleMenu}>{menu}</Link>
-                  </li>
-                ))
-              }
-
-            </div>
- 
+              <ul className={`${activeMenu == '제품소개' ? 'hidden' : ''}`}>
+                {
+                  Object.keys(navMenus).map((menu, index) => (
+                    <li key={index} className='border-b py-5 pl-7'>
+                      <Link href={`${ menu != '제품소개' ? navMenus[menu].link[0] : '#'}`} className='flex hover:text-red-600 items-center' scroll={false} onClick={() => {if(menu == '제품소개') {setActiveMenu(menu)} else {handleToggleMenu()}}}>{menu}</Link>
+                    </li>
+                  ))
+                }
+              </ul>
+              <ul className={`${activeMenu == '제품소개' ? '' : 'hidden'}`}>
+                <li className='flex border-b p-5 items-center hover:text-red-600 cursor-pointer' onClick={() => setActiveMenu(false)}>
+                  <LeftArrow className='stroke-black'/>제품소개
+                </li>
+                {
+                  navMenus['제품소개'].name.map((product, index) => (
+                    <Link key={index}  href={navMenus['제품소개'].link[index]} onClick={handleToggleMenu}>
+                      <li className='border-b py-5 pl-14 hover:text-red-600'> 
+                        {product}            
+                      </li>
+                    </Link> 
+                  ))
+                }
+              </ul>
+            </div> 
           </header>
 
         </>
       }
     </>
+  );
+}
+
+function ProductCategory({category, products, link}) {
+  
+  const [activeMenu, setActiveMenu] = useState(products[0]);
+
+  return (
+    <>
+      <div>
+        <div className="overflow-hidden">
+          <Link href={link} scroll={false}>
+            <Image src={`/products/${activeMenu}.jpg`} height={250} width={250} alt={activeMenu} className="cursor-pointer transition hover:scale-105"/>
+          </Link>
+        </div>
+        <div className="text-center font-custom font-medium py-2">
+          <Link href={link} scroll={false}>
+            {category}
+          </Link>
+        </div>
+        <ul className="leading-loose text-center font-custom font-light">
+          {
+            products.map((product, index) => (
+              <Link href={`/products/${product}`} key={index} scroll={false}>
+                <li  className="hover:text-red-600 hover:font-normal hover:cursor-pointer"
+                    onMouseOver={() => setActiveMenu(product)}
+                    onMouseOut={() => setActiveMenu(product)}
+                  >{product.split('_')[0]}</li>
+              </Link>
+            ))
+          }
+        </ul>
+      </div>
+    </>
+  );
+}
+
+function ProductsNav({navMenus, products}){
+
+  return (
+    <div className="bg-white py-6">
+      <div className="flex w-full justify-center space-x-16 max-w-screen-xl m-auto"> 
+        {
+          Object.keys(products).map( (category, index) => (
+            <ProductCategory key={index} category={category} products={products[category]} link={`${navMenus['제품소개'].link[index]}`}/>
+          ))
+        }
+      </div>
+    </div>
   );
 }

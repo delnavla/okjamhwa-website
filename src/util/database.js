@@ -1,5 +1,5 @@
 const { MongoClient } = require("mongodb");
-const url = `mongodb+srv://delnavla:${process.env.DB_PASS}@cluster0.vpk1aqm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
+const url = `mongodb+srv://delnavla:${process.env.DB_PASS}@cluster0.vpk1aqm.mongodb.net/okjamhwa?retryWrites=true&w=majority&appName=Cluster0`
 let connectDB
 
 if (process.env.NODE_ENV === 'development') {

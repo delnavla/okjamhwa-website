@@ -1,6 +1,11 @@
 import { connectDB } from "@/util/database"
+import { getServerSession } from "next-auth";
+import { authOptions } from "../auth/[...nextauth]";
 
 export default async function hander(req, res) { 
+  let session = await getServerSession(req, res, authOptions)
+  console.log(session)
+  
   if ( req.method == 'POST') {
 
     req.body['date'] = new Date()

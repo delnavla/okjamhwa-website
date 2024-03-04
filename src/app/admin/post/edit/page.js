@@ -1,7 +1,7 @@
 'use client'
 import Editor from "@/components/Lexical/Editor";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function Edit() {
   const [editorState, setEditorState] = useState();

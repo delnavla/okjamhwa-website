@@ -1,13 +1,14 @@
 'use client'
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { SessionProvider, signIn, signOut, useSession } from 'next-auth/react'
 
 export default function Footer() {
 
   const pathname = usePathname()
 
   return (
-    <>
+    <SessionProvider>
       { pathname.split('/')[1] != 'admin' &&
         <footer className="w-full h-36 py-8 border-t-[1px] border-solid border-neutral-300">
           <section className="flex px-6 max-w-screen-xl justify-between m-auto font-custom">
@@ -26,12 +27,23 @@ export default function Footer() {
           </div>
 
           <div className="text-gray-600 text-sm font-light leading-loose">
-            <span>이용약관</span><span className="ml-2 pl-2 border-s-[1px]">개인정보 처리방침</span>
+            <span>이용약관</span><span className="ml-2 pl-2 border-s-[1px]">개인정보 처리방침</span><span className="ml-2 pl-2 border-s-[1px]"><LoginToggle/></span>
             <p className="text-xs text-neutral-500 font-light">© 2024 Okjamhwa. All Rights Reserved</p>
           </div>
           </section>
         </footer>
       }
-    </>
+    </SessionProvider>
   );
 }
+
+function LoginToggle() {
+  const { data: session, status } = useSession();
+
+  if (session) {
+    return <button onClick={() => signOut()}>로그아웃</button>;
+  } else {
+    return <button onClick={() => signIn()}>관리자 로그인</button>;
+  }
+
+};
