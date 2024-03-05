@@ -10,7 +10,7 @@ export default function Footer() {
   return (
     <SessionProvider>
       { pathname.split('/')[1] != 'admin' &&
-        <footer className="w-full h-36 py-8 border-t-[1px] border-solid border-neutral-300">
+        <footer className="w-full h-36 py-8 border-t-[1px] border-solid border-neutral-300 bg-white">
           <section className="flex px-6 max-w-screen-xl justify-between m-auto font-custom">
           <div className="relative text-gray-600 text-sm font-light leading-loose w-[120px] h-[60px]">
             <Image 

@@ -122,7 +122,7 @@ export default function Timeline() {
       .attr("y", d => y(d.date) + 5 )
       .text( d => d.date)
       .attr("text-anchor", (d,i) => i % 2 == 0 ? "end" : "start")
-      .attr("font-family", "Pretendard")
+      .attr("font-family", "IMHyemin")
       .attr("font-size", "16px")
       .attr("font-weight", "600");
 
@@ -140,9 +140,9 @@ export default function Timeline() {
           .attr("dy", index === 0 ? 5 : 20) 
           .attr("text-anchor", i % 2 === 0 ? "end" : "start")
           .text(event)
-          .attr("font-family", "TheJamsil")
-          .attr("font-size", "15px")
-          .attr("font-weight", "200");
+          .attr("font-family", "IMHyemin")
+          .attr("font-size", "16px")
+          .attr("font-weight", "300");
       });
     });
   }, []);

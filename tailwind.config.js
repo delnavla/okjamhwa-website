@@ -23,7 +23,7 @@ module.exports = {
         nanumBarunGothic: ['NanumBarunGothic'],
         nanumGothic: ['NanumGothic'],
         hyemin :['IMHyemin'],
-        custom: ['NanumBarunGothic']
+        custom: ['IMHyemin']
       },
     },
   },

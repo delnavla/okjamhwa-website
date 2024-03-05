@@ -58,11 +58,13 @@ export default function PhotoGrid({ collection }) {
               <FullScreen/>
             </div>
           </div>
-          <p>{img.title}</p>
-          <p className='font-light text-sm'>{img.date.toISOString().slice(0, 10)}</p>
-          <div className='flex items-center'>
-            <Delete onClick={(e) => handleDeleteClick(e, img)} className="cursor-pointer m-auto"/>
-          </div>
+          <p className='mt-3'>{img.title}</p>
+          <p className='mt-1 font-light text-sm'>{img.date.toISOString().slice(0, 10)}</p>
+          { isAdmin &&
+            <div className='flex items-center'>
+              <Delete onClick={(e) => handleDeleteClick(e, img)} className="cursor-pointer m-auto"/>
+            </div>
+          }
         </div>
       ))}
       {isFullScreen && <CarouselFullScreen files={files} imgIndex={imgIndex} setImgIndex={setImgIndex} setIsFullScreen={setIsFullScreen}/>}

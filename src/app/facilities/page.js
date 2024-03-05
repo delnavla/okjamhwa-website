@@ -1,5 +1,6 @@
 'use client'
 import MiddleSection from "@/components/MiddleSection";
+import OutLine from "@/components/OutLine";
 import PhotoScroll from "@/components/PhotoScroll";
 import PictureContainer from "@/components/PictureContainer";
 import { useSearchParams } from "next/navigation";
@@ -19,31 +20,66 @@ export default function Facilities() {
 
   return (
     <>
-      <PictureContainer path={'middle_section/img6.png'} />
+      <PictureContainer path={'middle_section/img6.png'} title={'시설설비'}/>
       <div className="bg-white">
         <MiddleSection array={['시설안내', '설비안내']} activeMenu={activeMenu} setActiveMenu={setActiveMenu} />
-        <div className="max-w-screen-xl m-auto">
+        <div className="flex flex-col items-center py-20">
+          <div className="w-full max-w-screen-xl flex justify-start border-b border-black">
+            <h1 className="text-4xl font-custom m-4">{activeMenu}</h1>
+          </div>
+
+        { activeMenu === '시설안내' &&   
+          <div className="relative w-full max-w-screen-xl font-custom">
+            <div className="flex justify-center p-40 ">
+              <img src="건물개요.png" width={1000} />
+            </div>
+            <div className="absolute top-0">
+              <OutLine />
+            </div>
+            <div className="absolute top-[410px] p-[10px]">
+              <p className="text-xl font-semibold">본동</p>
+              <p className="pt-1"><span>부지</span><span className="font-light ml-2">1,995m²</span></p>
+              <p className="pt-1"><span>연면적</span><span className="font-light ml-2">495m²</span></p>
+              <p className="pt-1"><span>사용용도</span><span className="font-light ml-2">옥잠화영농조합 본점, 완제품 가공공장</span></p>
+            </div>
+            <div className="absolute top-[10px] left-[500px] p-[10px]">
+              <p className="text-xl font-semibold text-right">저온저장고</p>
+              <p className="pt-1"><span>부지</span><span className="font-light ml-2">990m²</span></p>
+              <p className="pt-1"><span>연면적</span><span className="font-light ml-2">165m²</span></p>
+              <p className="pt-1"><span>사용용도</span><span className="font-light ml-2">착즙포도즙 냉동</span></p>
+            </div>
+            <div className="absolute top-[60px] right-[130px] p-[10px]">
+              <p className="text-xl font-semibold text-right">전처리동</p>
+              <p className="pt-1"><span>부지</span><span className="font-light ml-2">660m²</span></p>
+              <p className="pt-1"><span>연면적</span><span className="font-light ml-2">1층 165m² 2층 82m²</span></p>
+              <p className="pt-1"><span>사용용도</span><span className="font-light ml-2">1층 포도즙착즙 및 전처리장 / 포도주 제조장</span><br/><span className="font-light ml-[68px]">2층 게스트하우스</span></p>
+            </div>
+          </div>
+        }
+
+
+        <div className="w-full max-w-screen-xl m-auto">
           { activeMenu === '시설안내' &&   
-              [
-                {
-                  title: '본동',
-                  files: ['1_본동.png']
-                },
-                {
-                  title: '전처리동',
-                  files: ['1_전처리동.png']
-                },
-                {
-                  title: '저온저장고',
-                  files: ['1_저온저장고(1).png', '2_저온저장고(2).png']
-                }
-              ].map((photo, index) => (
-                <PhotoScroll
-                  key={index}
-                  title={photo.title}
-                  files={photo.files}
-                />
-              ))     
+            [
+              {
+                title: '본동',
+                files: ['1_본동.png']
+              },
+              {
+                title: '전처리동',
+                files: ['1_전처리동.png']
+              },
+              {
+                title: '저온저장고',
+                files: ['1_저온저장고(1).png', '2_저온저장고(2).png']
+              }
+            ].map((photo, index) => (
+              <PhotoScroll
+                key={index}
+                title={photo.title}
+                files={photo.files}
+              />
+            ))     
           }
           { activeMenu === '설비안내' &&
             [
@@ -63,6 +99,7 @@ export default function Facilities() {
               />
             ))
           }
+        </div>
         </div>
       </div>
     </>    

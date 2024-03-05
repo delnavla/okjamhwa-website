@@ -22,8 +22,13 @@ export default async function Notice() {
       <PictureContainer path={'middle_section/img6.png'}/>
       <div className="bg-white">
         <MiddleSection array={array} activeMenu={'사진 게시판'} client={false} link={link}/>
+        <div className="flex flex-col items-center py-20">
+          <div className="w-full max-w-screen-xl flex justify-start border-b border-black">
+            <h1 className="text-4xl font-custom m-4">사진 게시판</h1>
+          </div>
         <div className="max-w-screen-xl py-20 m-auto font-custom">          
           <PhotoGrid collection={collection}/>              
+        </div>
         </div>
       </div>
     </>

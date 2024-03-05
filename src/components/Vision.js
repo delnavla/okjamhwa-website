@@ -1,6 +1,7 @@
 'use client'
 import * as d3 from "d3";
 import {useRef, useEffect} from "react";
+import Logo from "/public/circularLogo_black.svg"
 
 export default function Vision() {
   const svgRef = useRef(null);
@@ -16,7 +17,7 @@ export default function Vision() {
   
   useEffect(() => {            
 
-    const width = 1200,
+    const width = 600,
         height = 600,
         margin = 120;
 
@@ -26,7 +27,8 @@ export default function Vision() {
         .attr("width", width)
         .attr("height", height)
         .append("g")
-        .attr("transform", `translate(${width/2},${height/2})`);
+        .attr("transform", `translate(${width},${height/2})`);
+        // .attr("transform", `translate(${width/2},${height/2})`);
 
     const color = d3.scaleOrdinal()
     .domain(Object.keys(data))
@@ -84,8 +86,8 @@ export default function Vision() {
           return (midangle < Math.PI ? 'start' : 'end'); 
       })
       .style('font-size', '16px')
-      .style('font-family', 'TheJamsil')
-      .style("font-weight", "300")
+      .style('font-family', 'IMHyemin')
+      .style("font-weight", "400")
   
     svg
     .selectAll('allSlices')
@@ -95,7 +97,7 @@ export default function Vision() {
     .attr('fill', d => color(d.data[0]))
     // .attr("stroke", "black")
     .style("stroke-width", "1px")
-      .style("font-weight", "300")
+      .style("font-weight", "400")
   
   
     svg
@@ -105,11 +107,20 @@ export default function Vision() {
     .text(d => d.data[0]) 
     .attr("transform", d => "translate(" + arc.centroid(d) + ")")
     .style("text-anchor", "middle") 
-    .style("font-size", "18px") 
-    .style("font-weight", "300")
+    .style("font-size", "16px") 
+    .style("font-weight", "400")
     .style("fill", "black")
-    .style('font-family', 'TheJamsil')
+    .style('font-family', 'IMHyemin')
   }, []);
 
-  return <svg ref={svgRef}></svg>;
+  return (
+  <div className="w-full max-w-screen-xl"> 
+    <div className="flex">
+      <div className="relative">
+        <svg ref={svgRef}/>
+        <Logo className="absolute top-[100px] left-[450px] w-96 h-96" />
+      </div>
+    </div>
+  </div>
+  )
 }

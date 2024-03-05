@@ -181,8 +181,6 @@ body {
 	font-style: normal;
 	src: url('https://cdn.jsdelivr.net/gh/webfontworld/yangheeryu/GowunDodum.eot');
 	src: url('https://cdn.jsdelivr.net/gh/webfontworld/yangheeryu/GowunDodum?#iefix') format('embedded-opentype'),
-			 url('https://cdn.jsdelivr.net/gh/webfontworld/yangheeryu/GowunDodum.woff2') format('woff2'),
-			 url('https://cdn.jsdelivr.net/gh/webfontworld/yangheeryu/GowunDodum.woff') format('woff'),
 			 url('https://cdn.jsdelivr.net/gh/webfontworld/yangheeryu/GowunDodum.ttf') format("truetype");
 	font-display: swap;
 } 

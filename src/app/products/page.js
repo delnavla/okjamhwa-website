@@ -19,22 +19,27 @@ export default function Products() {
     농축액: ['배농축액_480g', '사과농축액_480g'],
     선물모음: ['잼선물모음_280g', '차선물모음_460g']
   }
+
+  const productNumber = {
+    잼선물모음_280g : 9774007078,
+    차선물모음_460g : 9774091854,
+  }
   
   return (
     <>
-      <PictureContainer path={'Recipes_PLP_Drinks_Desktop_3.webp'} />
+      <PictureContainer path={'Recipes_PLP_Drinks_Desktop_3.webp'} title={'제품소개'}/>
       <div className="bg-white">
         <ProductsCheckbox params={params.get('params')} products={products} selectedProducts={selectedProducts} setSelectedProducts={setSelectedProducts}/>
         <div className="grid grid-cols-4 max-w-screen-xl py-20 m-auto gap-[60px]">
         {          
           selectedProducts.map( (product, index) =>         
             <div key={index} className="w-[275px] h-auto text-center font-custom">    
-              <Link href={`/products/${product}`}>
-                <div className="overflow-hidden">
+              <Link href={`${product.includes('선물') ? `https://smartstore.naver.com/okjamhwa/products/${productNumber[product]}` : `/products/${product}` }`}>
+                <div className="overflow-hidden rounded-xl">
                   <Image src={`/products/${product}.jpg`} height={275} width={275} alt={product} className="transition hover:scale-105"/>
                 </div>
               </Link>
-                <div className="h-24">
+                <div className="h-12">
                   <p>{product.split('_')[0]}</p>
                   <p className="font-light">{product.split('_')[1]}</p>
                 </div>

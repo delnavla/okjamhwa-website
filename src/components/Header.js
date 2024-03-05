@@ -33,8 +33,8 @@ export default function Header() {
       link: ['/facilities?params=시설안내', '/facilities?params=설비안내']
     },
     '사업분야': {
-      name: ['OEM 생산', '자체 생산'],
-      link: ['/business?params=OEM%20생산', '/business?params=자체%20생산']
+      name: ['OEM 생산'],
+      link: ['/business?params=OEM%20생산']
     },
     '제품소개': {
       name: ['잼', '포도음료', '과실차류', '농축액', '선물모음'],
@@ -95,7 +95,7 @@ export default function Header() {
             onMouseLeave={() => setActiveMenu(false)}   
           >    
             <div className={`flex relative z-[5] w-full ${invert ? 'bg-white' : ''} h-full px-4 justify-between mx-auto max-w-screen-xl`}>
-              <div className={`flex items-center space-x-14 whitespace-nowrap font-custom font-light ${invert ? 'text-gray-700' : 'text-slate-50' }`}>
+              <div className={`flex items-center space-x-14 whitespace-nowrap font-custom font-medium ${invert ? 'text-gray-700' : 'text-slate-50' }`}>
                 <Link href='/' scroll={false}>
                   <Image 
                     src={`/horizontalLogo2_${invert ? 'black' : 'white'}.svg`}
@@ -107,15 +107,15 @@ export default function Header() {
                 </Link>
                 {
                   Object.keys(navMenus).map((menu, index) => (
-                    <li key={index} className={`flex relative h-full items-center list-none text-lg  ${activeMenu === menu ? 'text-red-600 font-normal' : ''}`}
+                    <li key={index} className={`flex relative h-full items-center list-none ${activeMenu === menu ? 'text-red-600 font-normal' : ''}`}
                       onMouseEnter={() => setActiveMenu(menu)}>
                       <Link href={`${ menu != '제품소개' ? navMenus[menu].link[0] : '#'}`} className='flex hover:text-red-600 items-center' scroll={false}>{menu}<ChevronDown/></Link>
                       { menu != '제품소개' && 
-                        <ul className={`bg-white w-40 border-solid border-[#494a52] absolute top-3/4 font-light text-base shadow-[0_2px_9px_0px_rgba(0,0,0,.2)] left-1/2 -translate-x-1/2 ${activeMenu === menu ? 'border-[1px]' : 'h-0 overflow-hidden border-0' }`}>  
+                        <ul className={`bg-white w-40 border-solid border-[#494a52] absolute top-3/4 font-medium text-base shadow-[0_2px_9px_0px_rgba(0,0,0,.2)] left-1/2 -translate-x-1/2 ${activeMenu === menu ? 'border-[1px]' : 'h-0 overflow-hidden border-0' }`}>  
                           <div className="bg-white w-[16px] h-[16px] border-[1px] border-solid border-[#494a52] absolute top-0 content-none left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-45 shadow-[0_2px_9px_0px_rgba(0,0,0,.2)]"/>
                           {                   
                             navMenus[menu].name.map((subMenu, subIndex) => (
-                              <li key={subIndex} className='bg-white border-b relative py-2 font-light text-center text-gray-700'>
+                              <li key={subIndex} className='bg-white border-b relative py-2 font-medium text-center text-gray-700'>
                                 <Link href={navMenus[menu].link[subIndex]} className='hover:text-red-600 hover:font-normal block' scroll={false}>
                                   {subMenu}
                                 </Link>
@@ -207,21 +207,21 @@ function ProductCategory({category, products, link}) {
   return (
     <>
       <div>
-        <div className="overflow-hidden">
+        <div className="overflow-hidden rounded-xl">
           <Link href={link} scroll={false}>
-            <Image src={`/products/${activeMenu}.jpg`} height={250} width={250} alt={activeMenu} className="cursor-pointer transition hover:scale-105"/>
+            <Image src={`/products/${activeMenu}.jpg`} height={250} width={250} alt={activeMenu} className="cursor-pointer transition hover:scale-105 "/>
           </Link>
         </div>
-        <div className="text-center font-custom font-medium py-2">
+        <div className="text-center font-custom font-bold py-2">
           <Link href={link} scroll={false}>
             {category}
           </Link>
         </div>
-        <ul className="leading-loose text-center font-custom font-light">
+        <ul className="leading-loose text-center font-custom font-medium">
           {
             products.map((product, index) => (
               <Link href={`/products/${product}`} key={index} scroll={false}>
-                <li  className="hover:text-red-600 hover:font-normal hover:cursor-pointer"
+                <li  className="hover:text-red-600 hover:font-medium hover:cursor-pointer"
                     onMouseOver={() => setActiveMenu(product)}
                     onMouseOut={() => setActiveMenu(product)}
                   >{product.split('_')[0]}</li>
@@ -237,7 +237,7 @@ function ProductCategory({category, products, link}) {
 function ProductsNav({navMenus, products}){
 
   return (
-    <div className="bg-white py-6">
+    <div className="bg-white py-6 drop-shadow">
       <div className="flex w-full justify-center space-x-16 max-w-screen-xl m-auto"> 
         {
           Object.keys(products).map( (category, index) => (

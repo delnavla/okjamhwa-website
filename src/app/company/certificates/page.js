@@ -29,13 +29,18 @@ export default function Certificate() {
 
   return (
     <>
-      <PictureContainer path={'middle_section/img1.jpg'} title={'메뉴에 대한 설명'} content={'하고싶은 말'}/>
+      <PictureContainer path={'middle_section/img1.jpg'} title={'회사소개'} />
       <div className="bg-white">
         <MiddleSection array={Object.keys(certificate)} activeMenu={activeMenu} setActiveMenu={setActiveMenu}/>
-        <div className="flex py-20 h-full flex-wrap max-w-screen-xl m-auto content-normal gap-32 justify-start">
+        <div className="flex flex-col items-center py-20">
+          <div className="w-full max-w-screen-xl flex justify-start border-b border-black">
+            <h1 className="text-4xl font-custom m-4">{activeMenu}</h1>
+          </div>
+        <div className="w-full flex py-20 h-full flex-wrap max-w-screen-xl m-auto content-normal gap-32 justify-start">               
           {
             certificate[activeMenu].map( img => <Zoom key={img.name} img={img}/> )
           }
+        </div>
         </div>
       </div>
     </>    

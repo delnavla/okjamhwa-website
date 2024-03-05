@@ -22,8 +22,13 @@ export default async function Notice() {
       <PictureContainer path={'Recipes_PLP_Drinks_Desktop_3.webp'} />
       <div className="bg-white">
         <MiddleSection array={array} activeMenu={'공지사항'} client={false} link={link}></MiddleSection>
+        <div className="flex flex-col items-center py-20">
+          <div className="w-full max-w-screen-xl flex justify-start border-b border-black">
+            <h1 className="text-4xl font-custom m-4">공지사항</h1>
+          </div>
         <div className="max-w-screen-xl py-20 m-auto">
           <Table collection={collection}/>
+        </div>
         </div>
       </div>
     </>
