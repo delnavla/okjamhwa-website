@@ -114,13 +114,25 @@ export default function Vision() {
   }, []);
 
   return (
-  <div className="w-full max-w-screen-xl"> 
-    <div className="flex">
-      <div className="relative">
-        <svg ref={svgRef}/>
-        <Logo className="absolute top-[100px] left-[450px] w-96 h-96" />
+  <>
+    <div className="w-full max-w-screen-xl lg:scale-100 md:scale-75 md:block hidden"> 
+      <div className="flex">
+        <div className="relative">
+          <svg ref={svgRef}/>
+          <Logo className="absolute top-[100px] left-[450px] w-96 h-96" />
+        </div>
       </div>
     </div>
-  </div>
+    <div className="table md:hidden font-custom ">
+      { 
+        Object.keys(content).map((key, index) => 
+          <div key={index} className="table-row">
+            <p className="table-cell p-2">{key}</p>
+            <p className="table-cell p-2">{content[key]}</p>
+          </div>
+        )
+      }
+    </div>
+  </>
   )
 }

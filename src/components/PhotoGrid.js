@@ -46,7 +46,7 @@ export default function PhotoGrid({ collection }) {
   return (
     <>
       {isAdmin && <Link href='/admin/post/upload' scroll={false}><Write width="28" height="28" viewBox="0 0 14 14" className="my-6"/></Link>}
-      <div className="grid grid-cols-3 gap-6 " >
+      <div className="grid sm:grid-cols-3 gap-6 " >
       {collection.map((img, index) => (
         <div key={index} className='text-center'>
           <div className='relative overflow-hidden rounded-lg group' onClick={()=>{onClick(img)}}>

@@ -2,6 +2,7 @@ import { connectDB } from "@/util/database";
 import PictureContainer from "@/components/PictureContainer";
 import Table from "@/components/Table";
 import MiddleSection from "@/components/MiddleSection";
+import Title from "@/components/Title";
 
 export default async function Notice() {
 
@@ -19,14 +20,12 @@ export default async function Notice() {
 
   return (
     <>
-      <PictureContainer path={'Recipes_PLP_Drinks_Desktop_3.webp'} />
+      <PictureContainer path={'middle_section/img4.png'} title={'고객센터'}/>
       <div className="bg-white">
         <MiddleSection array={array} activeMenu={'공지사항'} client={false} link={link}></MiddleSection>
-        <div className="flex flex-col items-center py-20">
-          <div className="w-full max-w-screen-xl flex justify-start border-b border-black">
-            <h1 className="text-4xl font-custom m-4">공지사항</h1>
-          </div>
-        <div className="max-w-screen-xl py-20 m-auto">
+        <div className="flex flex-col items-center py-10">
+          <Title title={'공지사항'} />
+        <div className="xl:max-w-screen-xl lg:max-w-screen-lg md:max-w-screen-md  sm:max-w-screen-sm sm:w-full w-11/12 pb-10 m-auto">
           <Table collection={collection}/>
         </div>
         </div>

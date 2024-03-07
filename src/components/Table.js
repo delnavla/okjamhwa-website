@@ -53,16 +53,16 @@ export default function Table({collection}) {
     <div className="font-custom ">
       <div className="border-b border-black">
         <div className="table table-fixed relative w-full">
-            <p className="table-cell min-h-12 py-4 w-36 text-center">번호</p>
+            <p className="table-cell min-h-12 py-4 sm:w-36 w-16 text-center">번호</p>
             <p className="table-cell min-h-12 py-4">제목</p>
             {isAdmin && <p className="table-cell min-h-12 w-20 p-4"><Link href='/admin/post/write' scroll={false}><Write width="28" height="28" viewBox="0 0 14 14" className="m-auto"/></Link></p>}          
-            <p className="table-cell min-h-12 py-4 w-32 text-center">등록일</p>
+            <p className="table-cell min-h-12 py-4 sm:w-32 w-20 text-center">등록일</p>
           </div>
       </div>
       { collection.map((post, index) => (
         <div key={post._id} className="border-b border-[#d4d4d4] ">
           <div className="table table-fixed relative w-full cursor-pointer" onClick={() => toggleContent(post._id)}>
-            <p className="table-cell min-h-12 py-4 w-36 text-center">{collection.length - index}</p>
+            <p className="table-cell min-h-12 py-4 sm:w-36 w-16 text-center text-sm">{collection.length - index}</p>
             <p className="table-cell min-h-12 py-4">{post.title}</p>
             { isAdmin && 
               <>
@@ -70,7 +70,7 @@ export default function Table({collection}) {
                 <p className="table-cell w-10 py-4" onClick={(e) => handleDeleteClick(e, post._id)}><Delete className="m-auto"/></p>
               </>
             }
-            <p className="table-cell min-h-12 py-4 w-32 text-center">{post.date.toISOString().slice(0, 10)}</p>
+            <p className="table-cell min-h-12 py-4 sm:w-32 w-20 text-center text-sm">{post.date.toISOString().slice(0, 10)}</p>
           </div>
           { contentId === post._id &&
             <div className="pl-36 py-7 pr-7 bg-[#f8f8f8]">        

@@ -43,7 +43,7 @@ export default function Timeline() {
     },
     {
       date: 2011,
-      event: ['공장리모델링준공', '특화품목 육성사업 지원사업으로 HACCP 시설 리모델링 및 과일잼 자동 충전라인 도입']
+      event: ['공장리모델링준공', '특화품목 육성사업 지원사업으로', 'HACCP 시설 리모델링 및 과일잼 자동 충전라인 도입']
     },
     {
       date: 2013,
@@ -76,11 +76,15 @@ export default function Timeline() {
     {
       date: 2022,
       event: ['여가부장관상 표창', '예비사회적기업지정']
+    },
+    {
+      date: 2023,
+      event: ['옥잠화 브랜드개발 및 상표 등록']
     }
   ]
   useEffect(() => {            
 
-    const width = 1500;
+    const width = 1100;
     const height = 1000;
     const marginTop = 20;
     const marginRight = 20;
@@ -109,10 +113,10 @@ export default function Timeline() {
       .append("circle")
       .attr("cx", width / 2)
       .attr("cy", d => y(d.date) )
-      .attr("r", 10)
+      .attr("r", 5)
       .style("fill", "white")
-      .style("stroke", "black")
-      .style("stroke-width", "1")
+      .style("stroke", "#81cc45")
+      .style("stroke-width", "3")
 
     svg.selectAll("text")
       .data(data)
@@ -147,5 +151,21 @@ export default function Timeline() {
     });
   }, []);
 
-  return <svg ref={svgRef}></svg>;
+  return (
+    <>
+      <div className="lg:scale-100 md:scale-[0.80] md:block hidden overflow-hidden">
+        <svg ref={svgRef} className=""/>
+      </div>
+      <div className="table mx-2 md:hidden font-custom text-sm">
+        {
+          data.map((d, index) =>
+            <div key={index} className="table-row">
+              <p className="table-cell p-2">{d.date}</p>
+              <p className="table-cell p-2">{d.event.join(' ')}</p>
+            </div>
+          )
+        }
+      </div>
+    </>
+  )
 }

@@ -54,10 +54,10 @@ export default function ProductsCheckbox({params, products, selectedProducts, se
   }, [checkedState]);
 
   return (
-    <div className="border-b-[1px] border-black h-16 w-full bg-slate-50 ">
-      <div className="flex max-w-screen-xl m-auto items-center h-full space-x-6">
+    <div className="border-b-[1px] border-black h-16 w-full ">
+      <div className="flex flex-wrap xl:max-w-screen-xl lg:max-w-screen-lg md:max-w-screen-md sm:max-w-screen-sm m-auto items-center h-full sm:space-x-6">
         {Object.keys(products).map((key) => (
-          <label key={key} className="flex items-center select-none cursor-pointer font-custom">
+          <label key={key} className="flex items-center select-none cursor-pointer font-custom sm:px-0 px-2">
             <input
               type="checkbox"
               name={key} 

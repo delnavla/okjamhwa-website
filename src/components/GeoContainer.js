@@ -38,7 +38,7 @@ export default function GeoContainer({
         .enter()
         .append("path")
         .attr("d", path)
-        .attr("fill", d => d.properties.EMD_ENG_NM === 'Simcheon-myeon' ? 'forestgreen' : 'lightgray')
+        .attr("fill", d => d.properties.EMD_ENG_NM === 'Simcheon-myeon' ? '#81cc45' : 'lightgray')
         .attr("stroke", "white")
         .attr("stroke-width", 2);
     

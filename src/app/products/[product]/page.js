@@ -24,12 +24,12 @@ export default function Product({params}) {
 
   return (
     <>
-      <PictureContainer path={'Recipes_PLP_Drinks_Desktop_3.webp'} title={'제품소개'}/>
+      <PictureContainer path={'middle_section/img5.png'} title={'제품소개'}/>
       <div className="bg-white">
-        <div className="max-w-screen-md m-auto py-20">
+        <div className="md:max-w-screen-md sm:max-w-screen-sm m-auto py-5">
           <div className="flex border-b border-black pb-5 mb-10 justify-end">
             <a href={`https://smartstore.naver.com/okjamhwa/products/${productNumber[product]}`} target='_blank'>
-              <div className="p-2 rounded bg-[#03c75a] cursor-pointer">
+              <div className="p-2 rounded bg-[#03c75a] cursor-pointer mr-2">
                 <Shopping width="28" height="28" viewBox="0 0 14 14" className='stroke-white'/>
               </div>
             </a>

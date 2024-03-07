@@ -22,6 +22,7 @@ export default function Header() {
   const [activeMenu, setActiveMenu] = useState(false);
 
   const [toggleMenu, setToggleMenu] = useState(false)
+  const [submenu, setSubmenu] = useState(null)
 
   const navMenus = {
     '회사소개': {
@@ -86,16 +87,25 @@ export default function Header() {
   const handleToggleMenu = () => {
     setToggleMenu(!toggleMenu)
   }
+
+  const toggleSubmenu = (menu) => {    
+    if ( submenu === menu) {
+      setSubmenu(null);
+    } else {
+      setSubmenu(menu);
+    }
+  };
+  
   return (
     <>
       { pathname.split('/')[1] != 'admin' &&
         <>
-          <header className={`${pathname === '/' ? 'sticky' : 'relative' } top-0 w-full z-10 h-24 hidden xl:block ${invert ? 'bg-white' : 'backdrop-blur-sm bg-gradient-to-b from-black/40 from-0% via-black/24 via-40% to-transparent to-100%'}`}
+          <header className={`${pathname === '/' ? 'sticky' : 'relative' } font-custom text-lg top-0 w-full z-10 h-24 hidden xl:block ${invert ? 'bg-white' : 'backdrop-blur-sm bg-gradient-to-b from-black/40 from-0% via-black/24 via-40% to-transparent to-100%'}`}
             onMouseEnter={() => setActiveMenu(true)}
             onMouseLeave={() => setActiveMenu(false)}   
           >    
             <div className={`flex relative z-[5] w-full ${invert ? 'bg-white' : ''} h-full px-4 justify-between mx-auto max-w-screen-xl`}>
-              <div className={`flex items-center space-x-14 whitespace-nowrap font-custom font-medium ${invert ? 'text-gray-700' : 'text-slate-50' }`}>
+              <div className={`flex items-center space-x-14 whitespace-nowrap  ${invert ? 'text-gray-700' : 'text-slate-50' }`}>
                 <Link href='/' scroll={false}>
                   <Image 
                     src={`/horizontalLogo2_${invert ? 'black' : 'white'}.svg`}
@@ -109,14 +119,14 @@ export default function Header() {
                   Object.keys(navMenus).map((menu, index) => (
                     <li key={index} className={`flex relative h-full items-center list-none ${activeMenu === menu ? 'text-red-600 font-normal' : ''}`}
                       onMouseEnter={() => setActiveMenu(menu)}>
-                      <Link href={`${ menu != '제품소개' ? navMenus[menu].link[0] : '#'}`} className='flex hover:text-red-600 items-center' scroll={false}>{menu}<ChevronDown/></Link>
+                      <Link href={`${ menu != '제품소개' ? navMenus[menu].link[0] : '#'}`} className='flex hover:text-red-600 font-semibold items-center' scroll={false}>{menu}<ChevronDown/></Link>
                       { menu != '제품소개' && 
                         <ul className={`bg-white w-40 border-solid border-[#494a52] absolute top-3/4 font-medium text-base shadow-[0_2px_9px_0px_rgba(0,0,0,.2)] left-1/2 -translate-x-1/2 ${activeMenu === menu ? 'border-[1px]' : 'h-0 overflow-hidden border-0' }`}>  
                           <div className="bg-white w-[16px] h-[16px] border-[1px] border-solid border-[#494a52] absolute top-0 content-none left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-45 shadow-[0_2px_9px_0px_rgba(0,0,0,.2)]"/>
                           {                   
                             navMenus[menu].name.map((subMenu, subIndex) => (
-                              <li key={subIndex} className='bg-white border-b relative py-2 font-medium text-center text-gray-700'>
-                                <Link href={navMenus[menu].link[subIndex]} className='hover:text-red-600 hover:font-normal block' scroll={false}>
+                              <li key={subIndex} className='bg-white border-b relative py-2  text-center text-gray-700'>
+                                <Link href={navMenus[menu].link[subIndex]} className='hover:text-red-600 block' scroll={false}>
                                   {subMenu}
                                 </Link>
                               </li> 
@@ -171,29 +181,36 @@ export default function Header() {
               <ul className={`${activeMenu == '제품소개' ? 'hidden' : ''}`}>
                 {
                   Object.keys(navMenus).map((menu, index) => (
-                    <li key={index} className='border-b py-5 pl-7'>
-                      <Link href={`${ menu != '제품소개' ? navMenus[menu].link[0] : '#'}`} className='flex hover:text-red-600 items-center' scroll={false} onClick={() => {if(menu == '제품소개') {setActiveMenu(menu)} else {handleToggleMenu()}}}>{menu}</Link>
-                    </li>
-                  ))
-                }
-              </ul>
-              <ul className={`${activeMenu == '제품소개' ? '' : 'hidden'}`}>
-                <li className='flex border-b p-5 items-center hover:text-red-600 cursor-pointer' onClick={() => setActiveMenu(false)}>
-                  <LeftArrow className='stroke-black'/>제품소개
-                </li>
-                {
-                  navMenus['제품소개'].name.map((product, index) => (
-                    <Link key={index}  href={navMenus['제품소개'].link[index]} onClick={handleToggleMenu}>
-                      <li className='border-b py-5 pl-14 hover:text-red-600'> 
-                        {product}            
-                      </li>
-                    </Link> 
+                    <div key={index} >
+                      <li className='border-b py-5 pl-7 cursor-pointer hover:text-red-600 ' onClick={() => toggleSubmenu(menu)}>
+                        {menu} 
+                      </li>      
+                        { submenu === menu && 
+                          <div className='border-b bg-slate-50 py-5 pl-12'>
+                            <ul>
+                              {
+                                navMenus[submenu].name.map((menu, index) => 
+                                  <li key={index} className='p-2 hover:text-red-600'>
+                                    <Link 
+                                      href={`${navMenus[submenu].link[index]}`}
+                                      className='flex items-center' 
+                                      scroll={false} 
+                                      onClick={() => handleToggleMenu()}
+                                    >
+                                      {menu}
+                                    </Link>
+                                  </li>
+                                )
+                              }
+                            </ul>
+                          </div>
+                        }             
+                    </div>                          
                   ))
                 }
               </ul>
             </div> 
           </header>
-
         </>
       }
     </>
@@ -206,22 +223,24 @@ function ProductCategory({category, products, link}) {
 
   return (
     <>
-      <div>
+      <div className="font-custom">
         <div className="overflow-hidden rounded-xl">
           <Link href={link} scroll={false}>
             <Image src={`/products/${activeMenu}.jpg`} height={250} width={250} alt={activeMenu} className="cursor-pointer transition hover:scale-105 "/>
           </Link>
         </div>
-        <div className="text-center font-custom font-bold py-2">
+        <div className="text-center font-bold py-2">
           <Link href={link} scroll={false}>
-            {category}
+            <span style={{ backgroundImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 80%, #81cc45 80%)'}}>
+              {category}
+            </span>
           </Link>
         </div>
-        <ul className="leading-loose text-center font-custom font-medium">
+        <ul className="leading-loose text-center font-medium text-base font-medium">
           {
             products.map((product, index) => (
               <Link href={`/products/${product}`} key={index} scroll={false}>
-                <li  className="hover:text-red-600 hover:font-medium hover:cursor-pointer"
+                <li className="hover:text-red-600 hover:font-medium hover:cursor-pointer"
                     onMouseOver={() => setActiveMenu(product)}
                     onMouseOut={() => setActiveMenu(product)}
                   >{product.split('_')[0]}</li>

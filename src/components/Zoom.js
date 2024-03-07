@@ -24,7 +24,7 @@ export default function Zoom({
       left: x - borderSize / 2,
       top: y - borderSize / 2,
       width: rect.width,
-      height: rect.height      
+      height: rect.height            
     });
     setIsHovering(true);
   }

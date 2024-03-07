@@ -2,6 +2,7 @@ import { connectDB } from "@/util/database";
 import PictureContainer from "@/components/PictureContainer";
 import MiddleSection from "@/components/MiddleSection";
 import PhotoGrid from "@/components/PhotoGrid";
+import Title from "@/components/Title";
 
 export default async function Notice() {
 
@@ -19,14 +20,12 @@ export default async function Notice() {
 
   return (
     <>
-      <PictureContainer path={'middle_section/img6.png'}/>
+      <PictureContainer path={'middle_section/img4.png'} title={'고객센터'}/>
       <div className="bg-white">
         <MiddleSection array={array} activeMenu={'사진 게시판'} client={false} link={link}/>
-        <div className="flex flex-col items-center py-20">
-          <div className="w-full max-w-screen-xl flex justify-start border-b border-black">
-            <h1 className="text-4xl font-custom m-4">사진 게시판</h1>
-          </div>
-        <div className="max-w-screen-xl py-20 m-auto font-custom">          
+        <div className="flex flex-col items-center py-10 ">
+          <Title title={'사진 게시판'}/>
+        <div className="xl:max-w-screen-xl lg:max-w-screen-lg md:max-w-screen-md sm:max-w-screen-sm sm:w-full w-11/12 m-auto font-custom">          
           <PhotoGrid collection={collection}/>              
         </div>
         </div>

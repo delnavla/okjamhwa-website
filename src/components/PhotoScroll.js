@@ -55,10 +55,11 @@ export default function PhotoScroll({title, files}) {
   }
 
   return (
-      <div className="my-24">
-
-        <div className="flex absolute z-[5] border-[1px] border-black w-28 h-16 -translate-y-1/2 bg-white font-custom justify-center items-center z-10 ">
-          {title}
+      <div className="py-12">
+        <div className="text-black bg-white flex absolute z-[5] border-[1px] border-black w-28 h-16 -translate-y-1/2 font-custom justify-center items-center z-10 ">
+          <span style={{ backgroundImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 80%, #81cc45 80%)'}}>
+            {title}
+          </span>
         </div>
 
         <div className='relative w-full h-full'>
@@ -79,7 +80,7 @@ export default function PhotoScroll({title, files}) {
           {
             files.map((img, index) => (
               <div key={index}>             
-                <div  className={`relative min-h-80 min-w-80 border-[1px] border-black cursor-pointer group overflow-hidden ${index === files.length - 1 ? 'mr-0' : 'mr-4' }`}
+                <div  className={`relative sm:min-h-80 sm:min-w-80 min-w-72 min-h-72 border-[1px] border-black cursor-pointer group overflow-hidden ${index === files.length - 1 ? 'mr-0' : 'mr-4' }`}
                   onClick={() => onClick(index)}>
                   <Image 
                     src={`/${title}/${img}`}
