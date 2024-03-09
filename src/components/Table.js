@@ -73,7 +73,7 @@ export default function Table({collection}) {
             <p className="table-cell min-h-12 py-4 sm:w-32 w-20 text-center text-sm">{post.date.toISOString().slice(0, 10)}</p>
           </div>
           { contentId === post._id &&
-            <div className="pl-36 py-7 pr-7 bg-[#f8f8f8]">        
+            <div className="sm:pl-36 pl-16 py-7 pr-7 bg-[#f8f8f8]">        
               <Editor initialEditorState={post.content} editable={false} editorState={editorState} setEditorState={setEditorState}/>
             </div>            
           }          

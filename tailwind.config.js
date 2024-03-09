@@ -1,3 +1,5 @@
+const { transform } = require('next/dist/build/swc')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -23,17 +25,11 @@ module.exports = {
         nanumBarunGothic: ['NanumBarunGothic'],
         nanumGothic: ['NanumGothic'],
         hyemin :['IMHyemin'],
-        custom: ['IMHyemin']
+        bingreaTaom: ['BinggraeTaom'],
+        nexgon: ['NixgonFonts'],
+        custom: ['BinggraeTaom']
       },
     },
   },
-  plugins: [require("tailwind-scrollbar-hide"), "prettier-plugin-tailwindcss",
-    function({ addVariant, e }) {
-      addVariant('nth-child-4n', ({ modifySelectors, separator }) => {
-        modifySelectors(({ className }) => {
-          return `.${e(`nth-child-4n${separator}${className}`)}:nth-child(4n)`;
-        });
-      });
-    }
-],
+  plugins: [require("tailwind-scrollbar-hide"), "prettier-plugin-tailwindcss"],
 };

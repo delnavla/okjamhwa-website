@@ -86,7 +86,7 @@ export default function Vision() {
           return (midangle < Math.PI ? 'start' : 'end'); 
       })
       .style('font-size', '16px')
-      .style('font-family', 'IMHyemin')
+      .style('font-family', 'BinggraeTaom')
       .style("font-weight", "400")
   
     svg
@@ -110,7 +110,7 @@ export default function Vision() {
     .style("font-size", "16px") 
     .style("font-weight", "400")
     .style("fill", "black")
-    .style('font-family', 'IMHyemin')
+    .style('font-family', 'BinggraeTaom')
   }, []);
 
   return (

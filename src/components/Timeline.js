@@ -126,9 +126,9 @@ export default function Timeline() {
       .attr("y", d => y(d.date) + 5 )
       .text( d => d.date)
       .attr("text-anchor", (d,i) => i % 2 == 0 ? "end" : "start")
-      .attr("font-family", "IMHyemin")
+      .attr("font-family", "BinggraeTaom")
       .attr("font-size", "16px")
-      .attr("font-weight", "600");
+      .attr("font-weight", "700");
 
     data.forEach((d, i) => {
     const eventText = svg.append("text")
@@ -144,7 +144,7 @@ export default function Timeline() {
           .attr("dy", index === 0 ? 5 : 20) 
           .attr("text-anchor", i % 2 === 0 ? "end" : "start")
           .text(event)
-          .attr("font-family", "IMHyemin")
+          .attr("font-family", "BinggraeTaom")
           .attr("font-size", "16px")
           .attr("font-weight", "300");
       });

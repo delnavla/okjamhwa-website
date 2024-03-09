@@ -14,12 +14,12 @@ function Greeting() {
     <div className="flex flex-col justify-center whitespace-pre text-center font-custom ">
       <p>옥잠화는 순백의 깨끗함으로 아름다운 향기를 냅니다.</p><br/>
       <p>옥잠화 영농 조합은 자연과 사람의 조화로움을 꿈꾸는</p><br/>
-      <div className="flex justify-center"><p className="font-bold" style={{ backgroundImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 80%, #81cc45 80%)'}}>친환경 농산물 가공 전문업체입니다.</p></div><br/><br/>
+      <div className="flex justify-center"><p className="font-bold" style={{ backgroundImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, #C9EC92 50%)'}}>친환경 농산물 가공 전문업체입니다.</p></div><br/><br/>
       <p>조금 느리고 소박하더라도 안전한 먹거리를 생산하여</p><br/>
       <p>농촌의 생산자와 도시 소비자를 물픔으로 이어주는</p><br/>
-      <div className="flex justify-center"><p className="font-bold" style={{ backgroundImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 80%, #81cc45 80%)'}}>든든한 연결고리가 됩니다.</p></div><br/><br/>
+      <div className="flex justify-center"><p className="font-bold" style={{ backgroundImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, #C9EC92 50%)'}}>든든한 연결고리가 됩니다.</p></div><br/><br/>
       <p>생명과 평화의 가치를 우선하며 함께 일하는</p><br/>
-      <div className="flex justify-center"><p className="font-bold" style={{ backgroundImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 80%, #81cc45 80%)'}}>모두가 꽃길을 걷는 공동체를 만들어 갑니다.</p></div>
+      <div className="flex justify-center"><p className="font-bold" style={{ backgroundImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, #C9EC92 50%)'}}>모두가 꽃길을 걷는 공동체를 만들어 갑니다.</p></div>
     </div>
     <img 
       src="/okjamhwa_draw.png" 

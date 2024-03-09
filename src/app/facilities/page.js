@@ -4,20 +4,11 @@ import OutLine from "@/components/OutLine";
 import PhotoScroll from "@/components/PhotoScroll";
 import PictureContainer from "@/components/PictureContainer";
 import Title from "@/components/Title";
-import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-export default function Facilities() {
+export default function Facilities({ searchParams }) {
 
-  const params  = useSearchParams();
-
-  const [activeMenu, setActiveMenu] = useState('');
-
-  useEffect(() => {
-    if (params.get('params')) {
-      setActiveMenu(params.get('params'))
-    }
-  }, [params]);
+  const [activeMenu, setActiveMenu] = useState(searchParams.params);
 
   return (
     <>

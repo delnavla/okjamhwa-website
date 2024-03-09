@@ -1,15 +1,37 @@
 'use client'
 import * as d3 from "d3";
-import {useRef, useEffect} from "react";
+import {useRef, useEffect, useState} from "react";
 
 export default function GeoContainer({
-  width = 600,
-  height = 600,
+  // width = 350,
+  // height = 350,
+  width = 500,
+  height = 500,
   // marginTop = 20,
   // marginRight = 20,
   // marginBottom = 30,
   // marginLeft = 40
 }) {
+
+  const [screenSize, setScreenSize] = useState(false);
+  const [dimensions, setDimensions] = useState({ width: width, height: height })
+
+  useEffect(() => {
+    const handleResize = () => {
+      const isLargeScreen = window.innerWidth >= 768;
+      setScreenSize(isLargeScreen);
+
+      if (isLargeScreen) {
+        setDimensions({ width: 500, height: 500 }); 
+      } else {
+        setDimensions({ width: 350, height: 350 }); 
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const svgRef = useRef();
 
@@ -50,13 +72,13 @@ export default function GeoContainer({
         .attr("text-anchor", "middle")
         .text(d => d.properties.EMD_KOR_NM)
         .attr("fill", "white")
-        .attr("font-family", "TheJamsil")
-        .attr("font-size", "16px")
-        .attr("font-weight", "400");
+        .attr("font-family", "BinggraeTaom")
+        .attr("font-size", "15px")
+        .attr("font-weight", "600");
     });
   }, []);
 
   return (
-      <svg ref={svgRef} width={width} height={height}/>
+      <svg ref={svgRef} width={dimensions.width} height={dimensions.height}/>
   );
 }

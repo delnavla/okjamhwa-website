@@ -5,7 +5,6 @@ import Link from 'next/link';
 import ChevronDown from '/public/chevron-down.svg';
 import Menu from '/public/menu.svg';
 import X from '/public/x.svg';
-import LeftArrow from '/public/chevron-left.svg'
 import { CSSTransition } from 'react-transition-group';
 import { usePathname } from 'next/navigation';
 import Shopping from '/public/shopping-bag-hand-bag-2--shopping-bag-purse-goods-item-products.svg'
@@ -231,7 +230,7 @@ function ProductCategory({category, products, link}) {
         </div>
         <div className="text-center font-bold py-2">
           <Link href={link} scroll={false}>
-            <span style={{ backgroundImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 80%, #81cc45 80%)'}}>
+            <span className='px-1' style={{ backgroundImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, #C9EC92 50%)'}}>
               {category}
             </span>
           </Link>

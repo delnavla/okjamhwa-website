@@ -4,12 +4,10 @@ import PictureContainer from "@/components/PictureContainer";
 import ProductsCheckbox from "@/components/ProductsCheckbox";
 import Image from "next/image";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export default function Products() {
+export default function Products({searchParams}) {
 
-  const params  = useSearchParams();
   const [selectedProducts, setSelectedProducts] = useState([]);
 
   const products = {
@@ -29,19 +27,19 @@ export default function Products() {
     <>
       <PictureContainer path={'middle_section/img5.png'} title={'제품소개'}/>
       <div className="bg-white">
-        <ProductsCheckbox params={params.get('params')} products={products} selectedProducts={selectedProducts} setSelectedProducts={setSelectedProducts}/>
+        <ProductsCheckbox params={searchParams.params} products={products} selectedProducts={selectedProducts} setSelectedProducts={setSelectedProducts}/>
         <div className="grid grid-cols-2 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 xl:max-w-screen-xl lg:max-w-screen-lg md:max-w-screen-md sm:max-w-screen-sm py-10 m-auto lg:gap-[60px] gap-5 px-5 ">
         {          
           selectedProducts.map( (product, index) =>         
             <div key={index} className="md:w-[275px] w-auto h-auto text-center font-custom">    
-              <Link href={`${product.includes('선물') ? `https://smartstore.naver.com/okjamhwa/products/${productNumber[product]}` : `/products/${product}` }`}>
+              <Link scroll={false} href={`${product.includes('선물') ? `https://smartstore.naver.com/okjamhwa/products/${productNumber[product]}` : `/products/${product}` }`}>
                 <div className="overflow-hidden rounded-xl">
                   <Image src={`/products/${product}.jpg`} height={275} width={275} alt={product} className="transition hover:scale-105"/>
                 </div>
               </Link>
                 <div className="h-12">
-                  <p>{product.split('_')[0]}</p>
-                  <p className="font-light">{product.split('_')[1]}</p>
+                  <p className="font-bold">{product.split('_')[0]}</p>
+                  <p className="text-sm">{product.split('_')[1]}</p>
                 </div>
             </div>
           )

@@ -406,6 +406,62 @@ body {
 	font-display: swap;
 }
 
+@font-face {
+	font-family: 'BinggraeTaom';
+	font-weight: 400;
+	font-style: normal;
+	src: url('https://cdn.jsdelivr.net/gh/webfontworld/BinggraeTaom/BinggraeTaomRegular.eot');
+	src: url('https://cdn.jsdelivr.net/gh/webfontworld/BinggraeTaom/BinggraeTaomRegular.eot?#iefix') format('embedded-opentype'),
+			 url('https://cdn.jsdelivr.net/gh/webfontworld/BinggraeTaom/BinggraeTaomRegular.woff2') format('woff2'),
+			 url('https://cdn.jsdelivr.net/gh/webfontworld/BinggraeTaom/BinggraeTaomRegular.woff') format('woff'),
+			 url('https://cdn.jsdelivr.net/gh/webfontworld/BinggraeTaom/BinggraeTaomRegular.ttf') format("truetype");
+	font-display: swap;
+} 
+@font-face {
+	font-family: 'BinggraeTaom';
+	font-weight: 700;
+	font-style: normal;
+	src: url('https://cdn.jsdelivr.net/gh/webfontworld/BinggraeTaom/BinggraeTaomBold.eot');
+	src: url('https://cdn.jsdelivr.net/gh/webfontworld/BinggraeTaom/BinggraeTaomBold.eot?#iefix') format('embedded-opentype'),
+			 url('https://cdn.jsdelivr.net/gh/webfontworld/BinggraeTaom/BinggraeTaomBold.woff2') format('woff2'),
+			 url('https://cdn.jsdelivr.net/gh/webfontworld/BinggraeTaom/BinggraeTaomBold.woff') format('woff'),
+			 url('https://cdn.jsdelivr.net/gh/webfontworld/BinggraeTaom/BinggraeTaomBold.ttf') format("truetype");
+	font-display: swap;
+} 
+
+@font-face {
+	font-family: 'NixgonFonts';
+	font-weight: 300;
+	font-style: normal;
+	src: url('https://cdn.jsdelivr.net/gh/webfontworld/nixgon/NixgonFonts-Light.eot');
+	src: url('https://cdn.jsdelivr.net/gh/webfontworld/nixgon/NixgonFonts-Light.eot?#iefix') format('embedded-opentype'),
+			 url('https://cdn.jsdelivr.net/gh/webfontworld/nixgon/NixgonFonts-Light.woff2') format('woff2'),
+			 url('https://cdn.jsdelivr.net/gh/webfontworld/nixgon/NixgonFonts-Light.woff') format('woff'),
+			 url('https://cdn.jsdelivr.net/gh/webfontworld/nixgon/NixgonFonts-Light.ttf') format("truetype");
+	font-display: swap;
+}
+@font-face {
+	font-family: 'NixgonFonts';
+	font-weight: 500;
+	font-style: normal;
+	src: url('https://cdn.jsdelivr.net/gh/webfontworld/nixgon/NixgonFonts-Medium.eot');
+	src: url('https://cdn.jsdelivr.net/gh/webfontworld/nixgon/NixgonFonts-Medium.eot?#iefix') format('embedded-opentype'),
+			 url('https://cdn.jsdelivr.net/gh/webfontworld/nixgon/NixgonFonts-Medium.woff2') format('woff2'),
+			 url('https://cdn.jsdelivr.net/gh/webfontworld/nixgon/NixgonFonts-Medium.woff') format('woff'),
+			 url('https://cdn.jsdelivr.net/gh/webfontworld/nixgon/NixgonFonts-Medium.ttf') format("truetype");
+	font-display: swap;
+}
+@font-face {
+	font-family: 'NixgonFonts';
+	font-weight: 700;
+	font-style: normal;
+	src: url('https://cdn.jsdelivr.net/gh/webfontworld/nixgon/NixgonFonts-Bold.eot');
+	src: url('https://cdn.jsdelivr.net/gh/webfontworld/nixgon/NixgonFonts-Bold.eot?#iefix') format('embedded-opentype'),
+			 url('https://cdn.jsdelivr.net/gh/webfontworld/nixgon/NixgonFonts-Bold.woff2') format('woff2'),
+			 url('https://cdn.jsdelivr.net/gh/webfontworld/nixgon/NixgonFonts-Bold.woff') format('woff'),
+			 url('https://cdn.jsdelivr.net/gh/webfontworld/nixgon/NixgonFonts-Bold.ttf') format("truetype");
+	font-display: swap;
+}
 .slide-down-enter {
   transform: translateY(-100%);
 }

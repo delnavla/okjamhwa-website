@@ -29,8 +29,8 @@ export default function Product({params}) {
         <div className="md:max-w-screen-md sm:max-w-screen-sm m-auto py-5">
           <div className="flex border-b border-black pb-5 mb-10 justify-end">
             <a href={`https://smartstore.naver.com/okjamhwa/products/${productNumber[product]}`} target='_blank'>
-              <div className="p-2 rounded bg-[#03c75a] cursor-pointer mr-2">
-                <Shopping width="28" height="28" viewBox="0 0 14 14" className='stroke-white'/>
+              <div className="flex justify-center p-2 rounded bg-[#03c75a] cursor-pointer mr-2 font-custom font-bold text-white hover:[animation-play-state:paused]">
+                <p>구매하기</p><Shopping width="20" height="20" viewBox="0 0 14 14" className='stroke-white'/>
               </div>
             </a>
           </div>

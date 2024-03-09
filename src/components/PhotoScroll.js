@@ -56,8 +56,8 @@ export default function PhotoScroll({title, files}) {
 
   return (
       <div className="py-12">
-        <div className="text-black bg-white flex absolute z-[5] border-[1px] border-black w-28 h-16 -translate-y-1/2 font-custom justify-center items-center z-10 ">
-          <span style={{ backgroundImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 80%, #81cc45 80%)'}}>
+        <div className="text-black bg-white flex absolute z-[5] border-[1px] border-black w-24 h-16 -translate-y-1/2 font-custom justify-center items-center z-10 ">
+          <span className="font-bold" style={{ backgroundImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 60%, #C9EC92 60%)'}}>
             {title}
           </span>
         </div>
