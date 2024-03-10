@@ -9,12 +9,15 @@ import Write from "/public/interface-edit-write-2--change-document-edit-modify-p
 import Edit from "/public/interface-edit-scissors--clipboard-copy-cut-paste-right-scissors.svg";
 import Delete from "/public/interface-delete-bin-2--remove-delete-empty-bin-trash-garbage.svg";
 import { useSession } from "next-auth/react";
+import { usePathname } from 'next/navigation';
 
 export default function Table({collection}) {
 
   const { data: session, status } = useSession();
 
   let isAdmin = status === "authenticated"
+
+  let pathname = usePathname().split('/').at(-1)
 
   const router = useRouter()
   const [contentId, setContentId] = useState(null);
@@ -28,18 +31,22 @@ export default function Table({collection}) {
     }
   };
 
-  
-
   function handleEditClick(event, post) {
     event.stopPropagation(); 
     const queryString = new URLSearchParams(post).toString();
-    router.push(`/admin/post/edit?${queryString}`)
+    router.push(`/admin/post/edit?${queryString}?category=${pathname}`)
   }
 
   function handleDeleteClick(event, id) {
     event.stopPropagation(); 
     if (confirm("삭제하시겠습니까?")) {
-      fetch('/api/post/delete', { method : 'DELETE', body: id })
+      fetch('/api/post/delete', { 
+        method : 'DELETE', 
+        headers: {
+          'Content-Type': 'application/json', 
+        },
+        body: JSON.stringify({id, pathname})
+      })
       .then((r)=>{
         if (r.status == 200) {
         return router.refresh()
@@ -55,7 +62,7 @@ export default function Table({collection}) {
         <div className="table table-fixed relative w-full">
             <p className="table-cell min-h-12 py-4 sm:w-36 w-16 text-center">번호</p>
             <p className="table-cell min-h-12 py-4">제목</p>
-            {isAdmin && <p className="table-cell min-h-12 w-20 p-4"><Link href='/admin/post/write' scroll={false}><Write width="28" height="28" viewBox="0 0 14 14" className="m-auto"/></Link></p>}          
+            {isAdmin && <p className="table-cell min-h-12 w-20 p-4"><Link href={`/admin/post/write?category=${pathname}`} scroll={false}><Write width="28" height="28" viewBox="0 0 14 14" className="m-auto"/></Link></p>}          
             <p className="table-cell min-h-12 py-4 sm:w-32 w-20 text-center">등록일</p>
           </div>
       </div>

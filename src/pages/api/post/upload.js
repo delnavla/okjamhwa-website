@@ -18,10 +18,10 @@ export default async function hander(req, res) {
     try {
       const db = (await connectDB).db('okjamhwa')
       let result = await db.collection('board').insertOne(req.body)
-      return res.status(200).redirect('/support/board')
+      // return res.status(200).redirect('/support/board')
 
-      // res.writeHead(302, { Location: '/support/notice' });
-      // res.end();
+      res.writeHead(302, { Location: '/support/board' });
+      res.end();
     } catch (error) {
       console.log(error)
     }  

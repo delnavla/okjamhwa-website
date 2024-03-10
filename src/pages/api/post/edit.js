@@ -14,12 +14,12 @@ export default async function hander(req, res) {
     
     try {
       const db = (await connectDB).db('okjamhwa')
-      let result = await db.collection('notice').updateOne({ _id: new ObjectId(req.body.id)},
+      let result = await db.collection(req.body.category).updateOne({ _id: new ObjectId(req.body.id)},
       { $set: { title: req.body.title, content: req.body.content }})
-      return res.status(200).redirect('/support/notice')
+      // return res.status(200).redirect(`/support/${req.body.category}`)
 
-      // res.writeHead(302, { Location: '/support/notice' });
-      // res.end();
+      res.writeHead(302, { Location: `/support/${req.body.category}` });
+      res.end();
     } catch (error) {
       console.log(error)
     }  

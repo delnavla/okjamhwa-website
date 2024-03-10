@@ -4,7 +4,6 @@ import { authOptions } from "../auth/[...nextauth]";
 
 export default async function hander(req, res) { 
   let session = await getServerSession(req, res, authOptions)
-  console.log(session)
   
   if ( req.method == 'POST') {
 
@@ -18,11 +17,11 @@ export default async function hander(req, res) {
     
     try {
       const db = (await connectDB).db('okjamhwa')
-      let result = await db.collection('notice').insertOne(req.body)
-      return res.status(200).redirect('/support/notice')
+      let result = await db.collection(req.body.category).insertOne(req.body)
+      // return res.status(200).redirect(`/support/${req.body.category}`)
 
-      // res.writeHead(302, { Location: '/support/notice' });
-      // res.end();
+      res.writeHead(302, { Location: `/support/${req.body.category}` });
+      res.end();
     } catch (error) {
       console.log(error)
     }  

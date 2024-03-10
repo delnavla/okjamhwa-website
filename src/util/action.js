@@ -36,7 +36,7 @@ export async function deleteS3Object(objectKey) {
 
   try {
     const response = await s3.send(deleteObjectCommand);
-    console.log(response)
+    // console.log(response)
   } catch (err) {
     console.log(err)
   }

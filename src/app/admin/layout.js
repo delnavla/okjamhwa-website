@@ -12,6 +12,7 @@ export default function AdminLayout({children}) {
             <ul>
               <li><Link href='/support/notice/'>공지사항</Link></li>
               <li><Link href='/support/board/'>사진 게시판</Link></li>
+              <li><Link href='/support/inquiry/'>문의</Link></li>
             </ul>
           </div>
         </nav>

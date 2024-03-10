@@ -4,12 +4,14 @@ import MiddleSection from "@/components/MiddleSection";
 import PhotoGrid from "@/components/PhotoGrid";
 import Title from "@/components/Title";
 import Link from "next/link";
+import Left from '/public/chevron-left.svg'
+import Right from '/public/chevron-right.svg'
 
 export default async function Board({ searchParams }) {
 
   let page = parseInt( searchParams.page, 10);
   page = !page || page < 1 ? 1 : page;
-  const perPage = 2
+  const perPage = 9
 
   const { collection, totalPages} = await getData(perPage, page)
   const array = ['공지사항', '사진 게시판', '문의']
@@ -30,38 +32,37 @@ export default async function Board({ searchParams }) {
         <div className="xl:max-w-screen-xl lg:max-w-screen-lg md:max-w-screen-md sm:max-w-screen-sm sm:w-full w-11/12 m-auto font-custom">          
           <PhotoGrid collection={collection}/>      
 
+          <div className="flex justify-center items-center">
             { page === 1 ? (
               <div className="opacity-60">
-                Previous
+                <Left className="stroke-black"/>
               </div>
             ) : (
               <Link href={`?page=${prevPage}`} scroll={false}>
-                Previous
+                <Left className="stroke-black"/>
               </Link>
             )}
-
             {
               pageNumbers.map( (pageNumber, index) => (
                 <Link 
                   key={index} 
                   href={`?page=${pageNumber}`} 
                   scroll={false}
-                  className={page === pageNumber ? "bg-green-500 " : "hover:bg-green-500 px-1"}>
+                  className={` p-5  ${page === pageNumber ? "text-red-600 font-bold" : "hover:text-red-600 hover:font-bold"}`}>
                   {pageNumber}
-                </Link>
-                  
+                </Link>                  
               ))
             }
-
             { page === totalPages ? (
               <div className="opacity-60">
-                Next
+                <Right className="stroke-black"/>
               </div>
             ) : (
               <Link href={`?page=${nextPage}`} scroll={false}>
-                Next
+                <Right className="stroke-black"/>
               </Link>
             )}
+          </div>
 
         </div>
         </div>
