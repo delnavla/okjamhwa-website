@@ -60,11 +60,11 @@ export default async function Home() {
         </div>
 
         <div className="flex flex-col justify-center items-center bg-white font-custom py-20 w-full text-[#24282C] overflow-hidden">  
-          <Title title={'옥잠화영농조합은'}/>
+          <Title title={'옥잠화 영농조합은'}/>
           <div className="grid sm:grid-cols-2 grid-cols-1 xl:max-w-screen-2xl">
             <div className="flex flex-col justify-center items-center order-1">
               <p className="text-center sm:text-xl">물 맑고, 청정한 <br/>충청북도 영동군 심천면에 위치하고 있습니다.</p>
-              <Link href='/company/about' className="flex justify-center items-center py-2 px-3 border border-black m-5">
+              <Link href='/company/about' className="flex justify-center items-center py-2 px-3 border border-black m-5" scroll={false}>
                 <p className="p-1">회사소개</p><CornerUp className="stroke-black"/>
               </Link>
             </div>
@@ -72,17 +72,17 @@ export default async function Home() {
             <div className="flex items-center sm:h-[400px] w-full sm:order-3 order-4 sm:mb-0 mb-10"><DraggableCarousel images={images}/></div>
             <div className="flex flex-col justify-center items-center sm:order-4 order-3 sm:mb-0 mb-10">
               <p className="text-center sm:text-xl ">환경과 농업을 살리는 일을 소중히 여기며 <br/> 친환경농산물을 가공합니다.</p>
-              <Link href='/business?params=OEM%20생산' className="flex justify-center items-center py-2 px-3 border border-black m-5 ">
-                <p className="p-1">OEM 생산</p><CornerUp className="stroke-black"/>
+              <Link href='/business?params=OEM%20생산' className="flex justify-center items-center py-2 px-3 border border-black m-5" scroll={false}>
+                <p className="p-1 ">OEM 생산</p><CornerUp className="stroke-black"/>
               </Link>
             </div>
             <div className="flex flex-col justify-center items-center order-5 sm:mb-0 mb-10">
               <p className="text-center sm:text-xl">옥잠화꽃처럼 깨끗하고 향기로운 물품을 <br/>생산하기 위해 노력하겠습니다.</p>
-              <Link href='/products' className="flex justify-center items-center py-2 px-3 border border-black m-5 ">
+              <Link href='/products' className="flex justify-center items-center py-2 px-3 border border-black m-5" scroll={false}>
                 <p className="p-1">제품소개</p><CornerUp className="stroke-black"/>
               </Link>
             </div>
-            <div className="flex items-center sm:h-[400px] 1w-full order-6 "><DraggableCarousel images={products}/></div>
+            <div className="flex items-center sm:h-[400px] 1w-full order-6 "><DraggableCarousel images={products} aspect={'square'}/></div>
           </div>
         </div>
       </main>

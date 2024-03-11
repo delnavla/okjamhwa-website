@@ -1,7 +1,7 @@
 'use client'
 import { useRef, useState } from 'react';
 
-export default function DraggableCarousel({images}) {
+export default function DraggableCarousel({images, aspect}) {
 
   const [isDrag, setIsDrag] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -43,10 +43,10 @@ export default function DraggableCarousel({images}) {
         <div className='flex'>
           {
             images.map((img, index) =>        
-              <div key={index} className='sm:min-w-96 min-w-64 m-3'>     
+              <div key={index} className='flex min-w-max sm:h-[300px] h-[210px] m-3 '>     
                 <img
                   src={img}
-                  className='aspect-[4/3] object-center object-cover transition rounded-lg'
+                  className={`${aspect === 'square' ? 'aspect-square' : 'aspect-[4/3]'} object-center object-cover transition rounded-lg`}
                 />                    
               </div>
             )

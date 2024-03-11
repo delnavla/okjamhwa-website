@@ -6,7 +6,7 @@ export default function GeoContainer({
   // width = 350,
   // height = 350,
   width = 500,
-  height = 500,
+  height = 400,
   // marginTop = 20,
   // marginRight = 20,
   // marginBottom = 30,
@@ -22,9 +22,9 @@ export default function GeoContainer({
       setScreenSize(isLargeScreen);
 
       if (isLargeScreen) {
-        setDimensions({ width: 500, height: 500 }); 
+        setDimensions({ width: 500, height: 400 }); 
       } else {
-        setDimensions({ width: 350, height: 350 }); 
+        setDimensions({ width: 350, height: 280 }); 
       }
     };
 
