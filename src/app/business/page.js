@@ -1,23 +1,14 @@
 'use client'
 import MiddleSection from "@/components/MiddleSection";
-import PhotoScroll from "@/components/PhotoScroll";
 import PictureContainer from "@/components/PictureContainer";
 import Title from "@/components/Title";
 import Zoom from "@/components/Zoom";
 import Image from "next/image";
-import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-export default function Business() {
-    const params  = useSearchParams();
+export default function Business({ searchParams }) {
 
-    const [activeMenu, setActiveMenu] = useState('');
-
-    useEffect(() => {
-      if (params.get('params')) {
-        setActiveMenu(params.get('params'))
-      }
-    }, [params]);
+    const [activeMenu, setActiveMenu] = useState(searchParams.params);
   
     const oemProducts = ['딸기잼_280g', '딸기잼_480g', '포도잼_280g', '참다래잼_280g', '블루베리잼_280g', '사과잼_280g',
       '포도즙_120ml', '상큼한 포도_120ml', '생강차_460g', '모과차_460g', '배농축액_480g', '사과농축액_480g']
