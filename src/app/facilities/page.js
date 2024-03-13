@@ -4,11 +4,15 @@ import OutLine from "@/components/OutLine";
 import PhotoScroll from "@/components/PhotoScroll";
 import PictureContainer from "@/components/PictureContainer";
 import Title from "@/components/Title";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Facilities({ searchParams }) {
 
-  const [activeMenu, setActiveMenu] = useState(searchParams.params);
+  const [activeMenu, setActiveMenu] = useState('');
+
+  useEffect(()=>{
+    setActiveMenu(searchParams.params)
+  },[searchParams])
 
   return (
     <>

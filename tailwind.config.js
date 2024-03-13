@@ -15,18 +15,6 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       fontFamily: {
-        pretendard: ['Pretendard'],
-        thejamsil: ['TheJamsil'],
-        chosunsg: ['ChosunSg'],
-        gowundodum: ['GowunDodum'],
-        gowunbatang: ['GowunBatang'],
-        nanumSquare: ['NanumSquare'],
-        nanumSquareNeo: ['NanumSquareNeo'],
-        nanumBarunGothic: ['NanumBarunGothic'],
-        nanumGothic: ['NanumGothic'],
-        hyemin :['IMHyemin'],
-        bingreaTaom: ['BinggraeTaom'],
-        nexgon: ['NixgonFonts'],
         custom: ['BinggraeTaom']
       },
     },
