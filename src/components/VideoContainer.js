@@ -10,7 +10,7 @@ export default function VideoContainer() {
   useEffect(() => {
     const handleResize = () => {
       setScreenSize(window.innerWidth >= 768);
-    };
+    }
 
     handleResize();
     window.addEventListener('resize', handleResize);

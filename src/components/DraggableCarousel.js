@@ -12,7 +12,7 @@ export default function DraggableCarousel({images, aspect}) {
     setIsDrag(true);
     setStartX(e.pageX - carouselRef.current.offsetLeft);
     setScrollLeft(carouselRef.current.scrollLeft);
-  };
+  }
 
   const stopDrag = () => {
     setIsDrag(false)

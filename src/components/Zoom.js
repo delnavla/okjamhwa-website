@@ -31,7 +31,7 @@ export default function Zoom({
 
   const handleMouseLeave = () => {
     setIsHovering(false);
-  };  
+  }
 
   return (
     <div className="font-custom text-center font-light">
@@ -71,4 +71,4 @@ export default function Zoom({
       {img.name}
     </div>
   );
-};
+}

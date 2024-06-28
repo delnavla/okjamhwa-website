@@ -25,7 +25,7 @@ export default function PhotoScroll({title, files}) {
       const newScroll = direction === 'left' ? currentScroll - scrollAmount : currentScroll + scrollAmount;
       photoRef.current.scrollTo({ left: newScroll, behavior: 'smooth' });
     }
-  };
+  }
 
   useEffect(() => {
     setHasScroll(photoRef.current.scrollWidth > photoRef.current.clientWidth);    
@@ -35,11 +35,11 @@ export default function PhotoScroll({title, files}) {
     setIsDrag(true);
     setStartX(e.pageX - e.currentTarget.offsetLeft)
     setScrollLeft(e.currentTarget.scrollLeft)
-  };
+  }
 
   const stopDrag = () => {
     setIsDrag(false)
-  };
+  }
 
   const onDrag = (e) => {
     if (!isDrag) return

@@ -4,6 +4,8 @@ import Title from "@/components/Title";
 import { connectDB } from "@/util/database";
 import Table from "@/components/Table";
 
+export const dynamic = "force-dynamic";
+
 export default async function Inquiry() {
 
   const client = await connectDB
@@ -32,7 +34,7 @@ export default async function Inquiry() {
               </div>
               <div className="table-row">
                 <div className="table-cell text-center font-bold p-2">전화</div>
-                <div className="table-cell text-left">042-742-0036</div>
+                <div className="table-cell text-left">043-742-0036</div>
               </div>
               <div className="table-row">
                 <div className="table-cell text-center font-bold p-2">팩스</div>

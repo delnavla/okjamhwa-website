@@ -25,7 +25,7 @@ export default function ProductsCheckbox({params, products, selectedProducts, se
       [name]: checked,
     })
 
-  };
+  }
 
   useEffect(() => {
     const falseChecked = Object.keys(checkedState).reduce((acc, key) => {

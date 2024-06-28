@@ -4,6 +4,8 @@ import Table from "@/components/Table";
 import MiddleSection from "@/components/MiddleSection";
 import Title from "@/components/Title";
 
+export const dynamic = "force-dynamic";
+
 export default async function Notice() {
 
   const client = await connectDB

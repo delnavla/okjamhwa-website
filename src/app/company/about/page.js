@@ -102,7 +102,7 @@ function Location() {
         <h2 className="text-lg mb-1 font-semibold">주소</h2>
         <h3 className="mb-4">충북 영동군 심천면 옥계폭포길 98-12</h3>
         <h2 className="text-lg mb-1 font-semibold">전화</h2>
-        <h3 className="mb-4">042-742-0036</h3>
+        <h3 className="mb-4">043-742-0036</h3>
         <h2 className="text-lg mb-1 font-semibold">팩스</h2>
         <h3 className="mb-4">043-742-6522</h3>
       </div>

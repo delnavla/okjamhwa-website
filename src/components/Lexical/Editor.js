@@ -89,7 +89,7 @@ export default function Editor({
     // ],
     editable: editable,
     editorState: initialEditorState,
-  };
+  }
 
   // const [editorState, setEditorState] = useState();
   function onChange(editorState) {

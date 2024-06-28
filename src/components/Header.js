@@ -61,7 +61,7 @@ export default function Header() {
       } else {
         setIsScrolled(false);
       }
-    };
+    }
 
     window.addEventListener('scroll', handleScroll);
 
@@ -93,7 +93,7 @@ export default function Header() {
     } else {
       setSubmenu(menu);
     }
-  };
+  }
   
   return (
     <>

@@ -29,12 +29,12 @@ export default function Table({collection}) {
     } else {
       setContentId(id);
     }
-  };
+  }
 
   function handleEditClick(event, post) {
     event.stopPropagation(); 
     const queryString = new URLSearchParams(post).toString();
-    router.push(`/admin/post/edit?${queryString}?category=${pathname}`)
+    router.push(`/admin/post/edit?${queryString}&category=${pathname}`)
   }
 
   function handleDeleteClick(event, id) {
@@ -48,6 +48,7 @@ export default function Table({collection}) {
         body: JSON.stringify({id, pathname})
       })
       .then((r)=>{
+        console.log(r)
         if (r.status == 200) {
         return router.refresh()
         }

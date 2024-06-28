@@ -1,9 +1,11 @@
 'use client'
 import Editor from "@/components/Lexical/Editor";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 
-export default function Write({ searchParams }) {
+export default function Write() {
   const [editorState, setEditorState] = useState();
+  const searchParams = useSearchParams()
 
   return (
     <div className="font-custom">
@@ -12,7 +14,7 @@ export default function Write({ searchParams }) {
         <input name="title" placeholder="title" className="border border-black pl-2 py-1 w-2/5"/>
         <input name="content" type="hidden" defaultValue={editorState}/>
         <Editor editorState={editorState} setEditorState={setEditorState}/>
-        <select name="category" defaultValue={searchParams.category || ''} className="border border-black p-1 mt-2 mr-2">
+        <select name="category" defaultValue={searchParams.get('category') || ''} className="border border-black p-1 mt-2 mr-2">
           <option value="notice">공지사항</option>
           <option value="inquiry">문의</option>
         </select>

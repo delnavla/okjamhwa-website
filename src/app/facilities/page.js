@@ -8,11 +8,11 @@ import { useEffect, useState } from "react";
 
 export default function Facilities({ searchParams }) {
 
-  const [activeMenu, setActiveMenu] = useState('');
+  const [activeMenu, setActiveMenu] = useState(null);
 
   useEffect(()=>{
-    setActiveMenu(searchParams.params)
-  },[searchParams])
+    setActiveMenu(searchParams.params)    
+  },[searchParams.params])
 
   return (
     <>
